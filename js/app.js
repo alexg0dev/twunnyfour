@@ -144,25 +144,23 @@
     const root = document.createElement("div");
     root.id = "tw24-chat";
     root.innerHTML = `
-      <button type="button" id="tw24-chat-toggle" aria-label="Open support chat"
-        class="fixed bottom-6 right-6 z-[70] h-14 w-14 rounded-full bg-[#e60000] text-white shadow-lg grid place-items-center hover:brightness-110 transition">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button type="button" id="tw24-chat-toggle" class="tw24-chat-toggle" aria-label="Open support chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
           <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
         </svg>
       </button>
-      <div id="tw24-chat-panel" class="fixed bottom-24 right-6 z-[70] w-[min(92vw,360px)] origin-bottom-right scale-95 opacity-0 pointer-events-none transition-all duration-200 rounded-2xl border border-white/10 bg-[#0f1118] shadow-2xl overflow-hidden">
-        <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-[#e60000]">
+      <div id="tw24-chat-panel" class="tw24-chat-panel">
+        <div class="tw24-chat-head">
           <div>
-            <p class="text-sm font-semibold text-white">TwunnyFour Support</p>
-            <p class="text-[11px] text-white/80">Usually replies in under a minute</p>
+            <strong>Support</strong>
+            <span>Usually replies in under a minute</span>
           </div>
-          <button type="button" id="tw24-chat-close" class="text-white/90 hover:text-white text-xl leading-none">&times;</button>
+          <button type="button" id="tw24-chat-close" class="tw24-chat-close" aria-label="Close">&times;</button>
         </div>
-        <div id="tw24-chat-log" class="h-64 overflow-y-auto p-4 space-y-3 text-sm"></div>
-        <form id="tw24-chat-form" class="flex gap-2 p-3 border-t border-white/10">
-          <input id="tw24-chat-input" type="text" placeholder="Ask about email or endpoint security..."
-            class="flex-1 rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#e60000]/ />
-          <button class="rounded-lg bg-[#e60000] px-3 py-2 text-sm font-semibold text-white">Send</button>
+        <div id="tw24-chat-log" class="tw24-chat-log"></div>
+        <form id="tw24-chat-form" class="tw24-chat-form">
+          <input id="tw24-chat-input" type="text" placeholder="Ask about email or endpoint…" autocomplete="off" />
+          <button type="submit">Send</button>
         </form>
       </div>`;
     document.body.appendChild(root);
@@ -174,9 +172,9 @@
 
     function push(who, text) {
       const row = document.createElement("div");
-      row.className = who === "bot" ? "text-white/80" : "text-right";
-      row.innerHTML = `<span class="inline-block max-w-[85%] rounded-xl px-3 py-2 ${
-        who === "bot" ? "bg-white/5 border border-white/10" : "bg-[#e60000] text-white"
+      row.style.textAlign = who === "user" ? "right" : "left";
+      row.innerHTML = `<span class="tw24-bubble ${
+        who === "bot" ? "tw24-bubble--bot" : "tw24-bubble--user"
       }">${text}</span>`;
       log.appendChild(row);
       log.scrollTop = log.scrollHeight;
@@ -184,15 +182,12 @@
 
     push(
       "bot",
-      "Hi — I'm TwunnyFour Assist. Ask about bundles, pricing, or deploying a capability.",
+      "Hi — ask about bundles, pricing, or deploying a capability.",
     );
 
     function setOpen(v) {
       open = v;
-      panel.classList.toggle("opacity-0", !v);
-      panel.classList.toggle("pointer-events-none", !v);
-      panel.classList.toggle("scale-95", !v);
-      panel.classList.toggle("scale-100", v);
+      panel.classList.toggle("is-open", v);
     }
 
     document.getElementById("tw24-chat-toggle").onclick = () => setOpen(!open);

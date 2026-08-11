@@ -6,16 +6,16 @@
     <title>Login — TwunnyFour</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#9499a8" },
+            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8b91a3" },
             fontFamily: {
               display: ['"Instrument Serif"', "Georgia", "serif"],
-              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              sans: ['"Schibsted Grotesk"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -25,9 +25,9 @@
   </head>
   <body class="bg-ink text-white font-sans">
     <header class="site-nav">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+      <div class="nav-inner">
         <a href="index.html" class="logo">Twunny<em>Four</em></a>
-        <nav class="hidden items-center gap-7 md:flex">
+        <nav class="nav-links" aria-label="Primary">
           <a href="index.html" class="nav-link">Home</a>
           <a href="email.html" class="nav-link">Email</a>
           <a href="endpoint.html" class="nav-link">Endpoint</a>
@@ -42,22 +42,22 @@
 
     <main class="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-5 py-16">
       <div class="tile !p-7">
-        <h1 class="font-display text-3xl">Account</h1>
+        <h1 class="font-display text-3xl m-0">Account</h1>
         <p class="mt-2 text-sm text-mute">Sign in to sync your cart and deploy capabilities across devices.</p>
 
         <div id="signed-out" class="mt-8">
-          <div class="mb-5 flex rounded-lg border border-white/10 p-1 text-sm">
+          <div class="mb-5 flex rounded-lg border border-white/[0.08] p-1 text-sm">
             <button type="button" data-mode="signin" class="mode-btn flex-1 rounded-md bg-accent py-2 font-semibold">Sign in</button>
             <button type="button" data-mode="signup" class="mode-btn flex-1 rounded-md py-2 font-semibold text-white/70">Sign up</button>
           </div>
           <form id="auth-form" class="space-y-4">
             <div>
-              <label class="text-xs text-mute">Email</label>
-              <input id="email" type="email" required class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-accent" />
+              <label class="field-label" for="email">Email</label>
+              <input id="email" type="email" required class="field-input" />
             </div>
             <div>
-              <label class="text-xs text-mute">Password</label>
-              <input id="password" type="password" required minlength="6" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-accent" />
+              <label class="field-label" for="password">Password</label>
+              <input id="password" type="password" required minlength="6" class="field-input" />
             </div>
             <p id="auth-error" class="hidden text-sm text-red-300"></p>
             <p id="auth-ok" class="hidden text-sm text-emerald-300"></p>
@@ -80,6 +80,7 @@
     <script src="js/config.js"></script>
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/motion.js"></script>
     <script>
       const params = new URLSearchParams(location.search);
       const next = params.get("next") || "cart.html";

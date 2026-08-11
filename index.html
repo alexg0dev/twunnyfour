@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,10 +19,10 @@
       tailwind.config = {
         theme: {
           extend: {
-            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#9499a8" },
+            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8a90a2" },
             fontFamily: {
               display: ['"Instrument Serif"', "Georgia", "serif"],
-              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              sans: ['"Schibsted Grotesk"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -32,15 +32,15 @@
   </head>
   <body class="bg-ink text-white font-sans">
     <header class="site-nav">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+      <div class="nav-inner">
         <a href="index.html" class="logo">Twunny<em>Four</em></a>
-        <nav class="hidden items-center gap-7 md:flex">
+        <nav class="nav-links" aria-label="Primary">
           <a href="index.html" class="nav-link is-active">Home</a>
           <a href="email.html" class="nav-link">Email</a>
           <a href="endpoint.html" class="nav-link">Endpoint</a>
           <a href="pricing.html" class="nav-link">Pricing</a>
         </nav>
-        <div class="flex items-center gap-2">
+        <div class="nav-actions">
           <a href="login.html" data-auth-link class="icon-btn" aria-label="Login">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
           </a>
@@ -48,221 +48,229 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
             <span data-cart-count class="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-[10px] font-semibold opacity-0">0</span>
           </a>
-          <button id="mobile-nav" class="icon-btn md:hidden" aria-label="Menu">
+          <button id="mobile-nav" class="icon-btn md:hidden" aria-label="Menu" aria-expanded="false">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
-      <div id="mobile-panel" class="hidden border-t border-white/10 px-5 py-4 md:hidden">
-        <div class="flex flex-col gap-3 text-sm text-white/70">
-          <a href="index.html">Home</a>
-          <a href="email.html">Email</a>
-          <a href="endpoint.html">Endpoint</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="bundles.html">Bundles overview</a>
-        </div>
-      </div>
     </header>
+    <div id="mobile-panel" class="mobile-panel">
+      <a href="index.html">Home</a>
+      <a href="email.html">Email</a>
+      <a href="endpoint.html">Endpoint</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="bundles.html">Bundles</a>
+    </div>
 
     <main>
-      <section class="hero-band">
-        <div class="hero-glow" aria-hidden="true"></div>
-        <div class="relative mx-auto max-w-6xl px-5 py-24 md:py-32">
-          <div class="stagger max-w-2xl">
-            <p class="eyebrow">Modern cybersecurity</p>
-            <h1 class="mt-4 font-display text-5xl text-white md:text-7xl">
-              Twunny<em class="not-italic text-accent">Four</em>
-            </h1>
-            <p class="mt-5 font-display text-2xl italic text-white/90 md:text-[2rem]">
-              Modern cybersecurity for email &amp; endpoints.
-            </p>
-            <p class="mt-3 text-lg text-white/75">We keep secure.</p>
-            <p class="mt-6 max-w-xl prose-muted !text-[15px] !text-white/70">
-              AI-powered protection that blocks phishing, ransomware, and data breaches.
-              Built for security leaders who need enterprise-grade controls without operational chaos.
-            </p>
-            <div class="mt-9 flex flex-wrap gap-3">
-              <a href="#capabilities" class="btn btn-primary">Explore capabilities</a>
-              <a href="email.html" class="btn btn-secondary">Email security</a>
+      <section class="hero" aria-label="Hero">
+        <div class="hero__copy">
+          <h1 class="hero__brand">Twunny<em>Four</em></h1>
+          <p class="hero__line">Modern cybersecurity for email &amp; endpoints.</p>
+          <p class="hero__support">
+            Protection engineered for the surfaces where business actually runs—inbox and device—without operational chaos.
+          </p>
+          <div class="hero__cta">
+            <span class="mag"><a href="pricing.html" class="btn btn-primary">View pricing</a></span>
+            <span class="mag"><a href="#capabilities" class="btn btn-secondary">Explore capabilities</a></span>
+          </div>
+        </div>
+        <div class="hero__plane" aria-hidden="true">
+          <div class="hero__plane-inner">
+            <div class="hero__plane-sheen"></div>
+            <span class="hero__plane-mark">24</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-chapter>
+        <div class="container">
+          <div class="split-copy reveal">
+            <div>
+              <p class="eyebrow">The perimeter</p>
+              <h2>Most breaches still start in the inbox or on a laptop</h2>
+            </div>
+            <div class="body prose-muted">
+              <p>
+                Attackers do not need exotic zero-days when a convincing invoice, a compromised SaaS token,
+                or an unpatched endpoint will do. TwunnyFour focuses on communication and devices—
+                the two surfaces where trust is decided every day.
+              </p>
+              <p>
+                We package zero-trust outcomes—verify identity, limit blast radius, inspect content,
+                respond quickly—into products security leaders can deploy without a year-long transformation.
+              </p>
             </div>
           </div>
+
+          <div class="rule-grid reveal reveal-stagger mt-16">
+            <article class="rule-cell">
+              <h3>Email is the front door</h3>
+              <p>
+                Phishing, BEC, and spoofed domains remain the cheapest path into finance and admin accounts.
+                Stopping malicious messages early collapses entire classes of incident work.
+              </p>
+            </article>
+            <article class="rule-cell">
+              <h3>Endpoints are the foothold</h3>
+              <p>
+                Once malware lands, lateral movement begins. NGAV, EDR, and hardening shrink that window
+                from hours to seconds.
+              </p>
+            </article>
+            <article class="rule-cell">
+              <h3>Identity binds both</h3>
+              <p>
+                Stolen credentials turn a single phish into a cloud-wide compromise. MFA and behavioral
+                analytics close the gap between mailbox and infrastructure.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-6xl px-5 py-20 md:py-24">
-        <div class="reveal grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p class="eyebrow">Why it matters</p>
-            <h2 class="mt-3 font-display text-4xl md:text-5xl">Most breaches still start in the inbox or on a laptop</h2>
-          </div>
-          <div class="space-y-5 prose-muted">
-            <p>
-              Attackers do not need exotic zero-days when a convincing invoice, a compromised SaaS token,
-              or an unpatched endpoint will do. TwunnyFour focuses on the two surfaces where business
-              actually happens: communication and devices.
-            </p>
-            <p>
-              We frame defense as a zero-trust program—verify identity, limit blast radius, inspect content,
-              and respond quickly—then package that into products your team can deploy without a year-long
-              transformation project.
+      <section class="section section-deep" data-chapter>
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Operating model</p>
+            <h2>Assess. Deploy. Prove.</h2>
+            <p class="prose-muted">
+              Connect Microsoft 365, Google Workspace, and your device fleet—then manage risk from one
+              capability and commerce surface.
             </p>
           </div>
-        </div>
-        <div class="reveal mt-12 grid gap-4 md:grid-cols-3">
-          <article class="tile">
-            <h3 class="font-display text-2xl">Email is the front door</h3>
-            <p class="mt-3 text-sm leading-relaxed text-mute">
-              Phishing, BEC, and spoofed domains remain the cheapest way into finance, HR, and admin accounts.
-              Stopping malicious messages early removes entire classes of downstream incident work.
-            </p>
-          </article>
-          <article class="tile">
-            <h3 class="font-display text-2xl">Endpoints are the foothold</h3>
-            <p class="mt-3 text-sm leading-relaxed text-mute">
-              Once malware lands on a laptop or server, lateral movement begins. NGAV, EDR, and hardening
-              shrink that window from hours to seconds.
-            </p>
-          </article>
-          <article class="tile">
-            <h3 class="font-display text-2xl">Identity binds both</h3>
-            <p class="mt-3 text-sm leading-relaxed text-mute">
-              Stolen credentials turn a single phish into a cloud-wide compromise. MFA enforcement and
-              behavioral analytics close the gap between mailbox and infrastructure.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="border-y border-white/10 bg-[#07080c]">
-        <div class="mx-auto max-w-6xl px-5 py-20">
-          <div class="reveal mb-10 max-w-2xl">
-            <p class="eyebrow">How TwunnyFour works</p>
-            <h2 class="mt-3 font-display text-4xl md:text-5xl">A clear operating model</h2>
-            <p class="mt-4 prose-muted">
-              Deploy the layers you need, connect them to Microsoft 365, Google Workspace, and your device fleet,
-              then manage risk from one commerce and capability surface.
-            </p>
-          </div>
-          <ol class="reveal grid gap-4 md:grid-cols-3">
-            <li class="tile">
-              <p class="text-sm font-semibold text-accent">01</p>
-              <h3 class="mt-3 font-display text-2xl">Assess exposure</h3>
-              <p class="mt-3 text-sm leading-relaxed text-mute">
-                Start with email gateway coverage, endpoint prevention, and identity controls. Add specialized
-                capabilities where your industry or architecture demands them.
+          <ol class="rule-grid reveal reveal-stagger">
+            <li class="rule-cell">
+              <p class="rule-num">01</p>
+              <h3>Assess exposure</h3>
+              <p>
+                Start with gateway coverage, endpoint prevention, and identity controls. Add specialized
+                layers where industry or architecture demands them.
               </p>
             </li>
-            <li class="tile">
-              <p class="text-sm font-semibold text-accent">02</p>
-              <h3 class="mt-3 font-display text-2xl">Deploy with intent</h3>
-              <p class="mt-3 text-sm leading-relaxed text-mute">
+            <li class="rule-cell">
+              <p class="rule-num">02</p>
+              <h3>Deploy with intent</h3>
+              <p>
                 Each product ships with defined outcomes—block phishing, contain ransomware, harden devices—
                 not an endless feature matrix.
               </p>
             </li>
-            <li class="tile">
-              <p class="text-sm font-semibold text-accent">03</p>
-              <h3 class="mt-3 font-display text-2xl">Operate and prove</h3>
-              <p class="mt-3 text-sm leading-relaxed text-mute">
-                Monitoring, response playbooks, and posture reporting keep the program measurable for security
-                teams and understandable for executives.
+            <li class="rule-cell">
+              <p class="rule-num">03</p>
+              <h3>Operate and prove</h3>
+              <p>
+                Monitoring, response playbooks, and posture reporting keep the program measurable for
+                security teams and clear for executives.
               </p>
             </li>
           </ol>
         </div>
       </section>
 
-      <section id="capabilities" class="mx-auto max-w-6xl px-5 py-20 md:py-28">
-        <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Capability map</p>
-          <h2 class="mt-3 font-display text-4xl md:text-5xl">Twenty controls that strengthen the perimeter</h2>
-          <p class="mt-4 prose-muted">
-            Browse the catalog like a product menu. Select a capability to read what it does, who it is for,
-            and what you get—then deploy it to your cart when you are ready.
-          </p>
-        </div>
-        <div class="cap-layout reveal">
-          <div id="cap-list" class="cap-table max-h-[640px] overflow-y-auto"></div>
-          <aside class="cap-panel">
-            <div id="detail-body" class="cap-panel-inner">
-              <p class="eyebrow">Capability detail</p>
-              <div class="mt-3 flex items-start justify-between gap-3">
-                <h3 id="detail-name" class="font-display text-3xl">Identity Protection</h3>
-                <span id="detail-num" class="pt-2 text-sm font-semibold text-mute">20</span>
-              </div>
-              <p id="detail-blurb" class="mt-4 text-sm leading-relaxed text-mute"></p>
-              <p id="detail-deep" class="mt-4 text-[15px] leading-relaxed text-white/80"></p>
-              <p class="mt-5 text-xs font-semibold text-white/45">Best for</p>
-              <p id="detail-who" class="mt-1 text-sm text-mute"></p>
-              <p class="mt-5 text-xs font-semibold text-white/45">Included controls</p>
-              <ul id="detail-features" class="feature-list mt-2"></ul>
-              <div class="mt-8 flex items-end justify-between gap-4 border-t border-white/10 pt-6">
-                <div>
-                  <p class="text-xs text-mute">Per node / month</p>
-                  <p class="mt-1 font-display text-4xl">$<span id="detail-price">15</span></p>
-                </div>
-                <button id="detail-deploy" data-add-cart="cap-20" class="btn btn-primary">Deploy capability</button>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="border-y border-white/10 bg-[#07080c]">
-        <div class="mx-auto grid max-w-6xl gap-6 px-5 py-20 md:grid-cols-2">
-          <a href="email.html" class="reveal group tile !p-8 hover:border-accent/40">
-            <p class="eyebrow">Product</p>
-            <h3 class="mt-3 font-display text-3xl">Email security</h3>
-            <p class="mt-3 text-sm leading-relaxed text-mute">
-              Gateway, BEC defense, DMARC, awareness, and collaboration protection—explained as a full product line.
-            </p>
-            <span class="mt-8 text-sm font-semibold text-white/70 group-hover:text-accent">Open product page →</span>
-          </a>
-          <a href="endpoint.html" class="reveal group tile !p-8 hover:border-accent/40">
-            <p class="eyebrow">Product</p>
-            <h3 class="mt-3 font-display text-3xl">Endpoint security</h3>
-            <p class="mt-3 text-sm leading-relaxed text-mute">
-              NGAV, EDR/XDR, managed hunting, identity protection, and MDR for devices that hold the business.
-            </p>
-            <span class="mt-8 text-sm font-semibold text-white/70 group-hover:text-accent">Open product page →</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="mx-auto max-w-6xl px-5 py-20 md:py-28">
-        <div class="reveal mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-2xl">
-            <p class="eyebrow">Intelligence</p>
-            <h2 class="mt-3 font-display text-4xl">What the industry is reporting</h2>
-            <p class="mt-3 prose-muted">
-              Live headlines from major cybersecurity publishers, filtered toward phishing, ransomware,
-              identity, cloud, and breach topics that map to our product surface.
+      <section id="capabilities" class="section" data-chapter>
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Capability theatre</p>
+            <h2>Twenty controls. One stage.</h2>
+            <p class="prose-muted">
+              Browse the catalog like a product index. Select a control to open its brief—then deploy
+              to cart when the fit is clear.
             </p>
           </div>
-          <p class="text-xs text-mute">Updated <span id="news-stamp">…</span></p>
-        </div>
-        <div id="news-feed" class="reveal border-t border-white/10">
-          <p class="py-8 text-sm text-mute">Loading…</p>
+          <div class="theatre reveal">
+            <div id="cap-list" class="theatre-rail" role="listbox" aria-label="Capabilities"></div>
+            <div class="theatre-stage">
+              <div id="detail-mark" class="theatre-watermark" aria-hidden="true">20</div>
+              <div id="detail-body" class="theatre-content is-in">
+                <p class="eyebrow-red eyebrow">Capability</p>
+                <h3 id="detail-name" class="mt-3 font-display text-4xl md:text-5xl">Identity Protection</h3>
+                <p id="detail-blurb" class="mt-4 text-sm leading-relaxed text-mute"></p>
+                <p id="detail-deep" class="mt-4 text-[15px] leading-relaxed text-white/80"></p>
+                <p class="mt-7 text-xs font-medium tracking-wide text-white/35 uppercase">Best for</p>
+                <p id="detail-who" class="mt-1 text-sm text-mute"></p>
+                <p class="mt-5 text-xs font-medium tracking-wide text-white/35 uppercase">Included</p>
+                <ul id="detail-features" class="feature-list mt-2"></ul>
+              </div>
+              <div class="theatre-foot">
+                <div>
+                  <p class="text-xs text-mute">Per node / month</p>
+                  <p class="mt-1 font-display text-5xl">$<span id="detail-price">15</span></p>
+                </div>
+                <span class="mag"><button id="detail-deploy" data-add-cart="cap-20" class="btn btn-primary">Deploy capability</button></span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="mx-auto max-w-6xl px-5 pb-24">
-        <div class="reveal rounded-2xl border border-white/10 bg-gradient-to-br from-accent/15 to-transparent p-8 md:p-10">
-          <div class="grid gap-6 md:grid-cols-[1.3fr_auto] md:items-center">
+      <section class="section section-deep" data-chapter>
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Products</p>
+            <h2>Two lines. Full depth.</h2>
+            <p class="prose-muted">Open a product page for architecture, narrative, plans, and FAQs.</p>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2 reveal reveal-stagger">
+            <a href="email.html" class="tile tile-link !p-9 group">
+              <p class="eyebrow-red eyebrow">01</p>
+              <h3 class="mt-3 font-display text-4xl">Email security</h3>
+              <p class="mt-4 text-sm leading-relaxed text-mute">
+                Gateway, BEC defense, DMARC, awareness, and collaboration protection—told as a complete product line.
+              </p>
+              <span class="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/50 group-hover:text-white transition-colors">
+                Enter product <span aria-hidden="true">→</span>
+              </span>
+            </a>
+            <a href="endpoint.html" class="tile tile-link !p-9 group">
+              <p class="eyebrow-red eyebrow">02</p>
+              <h3 class="mt-3 font-display text-4xl">Endpoint security</h3>
+              <p class="mt-4 text-sm leading-relaxed text-mute">
+                NGAV, EDR/XDR, managed hunting, identity protection, and MDR for the devices that hold the business.
+              </p>
+              <span class="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/50 group-hover:text-white transition-colors">
+                Enter product <span aria-hidden="true">→</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-chapter>
+        <div class="container">
+          <div class="reveal mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="section-head !mb-0">
+              <p class="eyebrow">Intelligence</p>
+              <h2>What the industry is reporting</h2>
+              <p class="prose-muted">
+                Live headlines filtered toward phishing, ransomware, identity, cloud, and breach topics.
+              </p>
+            </div>
+            <p class="text-xs text-mute shrink-0">Updated <span id="news-stamp">…</span></p>
+          </div>
+          <div id="news-feed" class="reveal border-t border-white/[0.075]">
+            <p class="py-8 text-sm text-mute">Loading…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section !pt-0">
+        <div class="container">
+          <div class="cta-band reveal">
             <div>
               <h2 class="font-display text-3xl md:text-4xl">Ready to price a stack?</h2>
               <p class="mt-3 max-w-xl text-sm leading-relaxed text-mute">
-                Transparent plans for teams of every size—or assemble capabilities and product modules à la carte.
+                Transparent plans—or assemble capabilities and modules à la carte.
               </p>
             </div>
-            <a href="pricing.html" class="btn btn-primary justify-center">View pricing</a>
+            <span class="mag"><a href="pricing.html" class="btn btn-primary justify-center">View pricing</a></span>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div class="container footer-grid">
         <div>
           <p class="logo">Twunny<em>Four</em></p>
           <p class="mt-4 max-w-sm text-sm leading-relaxed text-mute">
@@ -270,84 +278,83 @@
             measurable outcomes.
           </p>
         </div>
-        <div>
-          <p class="text-sm font-semibold">Products</p>
-          <ul class="mt-4 space-y-2 text-sm text-mute">
-            <li><a class="hover:text-white" href="email.html">Email security</a></li>
-            <li><a class="hover:text-white" href="endpoint.html">Endpoint security</a></li>
-            <li><a class="hover:text-white" href="bundles.html">Bundles overview</a></li>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="email.html">Email security</a></li>
+            <li><a href="endpoint.html">Endpoint security</a></li>
+            <li><a href="bundles.html">Bundles overview</a></li>
           </ul>
         </div>
-        <div>
-          <p class="text-sm font-semibold">Company</p>
-          <ul class="mt-4 space-y-2 text-sm text-mute">
-            <li><a class="hover:text-white" href="pricing.html">Pricing</a></li>
-            <li><a class="hover:text-white" href="#capabilities">Capabilities</a></li>
-            <li><button type="button" class="hover:text-white" onclick="document.getElementById('tw24-chat-toggle')?.click()">Support</button></li>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><button type="button" onclick="document.getElementById('tw24-chat-toggle')?.click()">Support</button></li>
           </ul>
         </div>
-        <div>
-          <p class="text-sm font-semibold">Trust</p>
+        <div class="footer-col">
+          <h4>Trust</h4>
           <p class="mt-4 text-sm leading-relaxed text-mute">
-            Built for Microsoft 365, Google Workspace, and modern endpoint fleets. Cart and account sync via Supabase auth.
+            Built for Microsoft 365, Google Workspace, and modern endpoint fleets. Cart sync via Supabase auth.
           </p>
         </div>
       </div>
-      <div class="border-t border-white/10 px-5 py-5 text-center text-xs text-white/30">
-        © <span id="year"></span> TwunnyFour
-      </div>
+      <div class="footer-bottom">© <span id="year"></span> TwunnyFour</div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/motion.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
-      document.getElementById("mobile-nav").onclick = () =>
-        document.getElementById("mobile-panel").classList.toggle("hidden");
-
-      const io = new IntersectionObserver(
-        (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("is-in")),
-        { threshold: 0.12 },
-      );
-      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      const panel = document.getElementById("mobile-panel");
+      const toggle = document.getElementById("mobile-nav");
+      toggle.onclick = () => {
+        const open = panel.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      };
 
       const caps = window.TW24_PRODUCTS.capabilities.slice().sort((a, b) => a.number - b.number);
       let active = caps.find((c) => c.number === 20) || caps[0];
       const list = document.getElementById("cap-list");
+      const mark = document.getElementById("detail-mark");
+      const body = document.getElementById("detail-body");
 
-      function renderDetail(cap) {
+      function paint(cap) {
         active = cap;
-        const body = document.getElementById("detail-body");
-        body.classList.remove("cap-panel-inner");
-        void body.offsetWidth;
-        body.classList.add("cap-panel-inner");
+        mark.textContent = String(cap.number).padStart(2, "0");
         document.getElementById("detail-name").textContent = cap.name;
-        document.getElementById("detail-num").textContent = String(cap.number).padStart(2, "0");
         document.getElementById("detail-blurb").textContent = cap.blurb;
         document.getElementById("detail-deep").textContent = cap.detail || "";
         document.getElementById("detail-who").textContent = cap.who || "";
         document.getElementById("detail-price").textContent = cap.price;
         document.getElementById("detail-deploy").setAttribute("data-add-cart", cap.id);
-        document.getElementById("detail-features").innerHTML = cap.features
-          .map((f) => `<li>${f}</li>`)
-          .join("");
-        list.querySelectorAll(".cap-item").forEach((row) => {
-          row.classList.toggle("is-active", row.dataset.id === cap.id);
+        document.getElementById("detail-features").innerHTML = cap.features.map((f) => `<li>${f}</li>`).join("");
+        list.querySelectorAll(".theatre-item").forEach((row) => {
+          const on = row.dataset.id === cap.id;
+          row.classList.toggle("is-active", on);
+          row.setAttribute("aria-selected", on ? "true" : "false");
         });
+      }
+
+      function renderDetail(cap) {
+        if (cap.id === active.id && body.classList.contains("is-in")) {
+          paint(cap);
+          return;
+        }
+        window.TW24_theatreSwap(body, mark, () => paint(cap));
       }
 
       list.innerHTML = caps
         .map(
           (c) => `
-        <button type="button" class="cap-item ${c.id === active.id ? "is-active" : ""}" data-id="${c.id}">
+        <button type="button" class="theatre-item ${c.id === active.id ? "is-active" : ""}" data-id="${c.id}" role="option" aria-selected="${c.id === active.id}">
           <span class="idx">${String(c.number).padStart(2, "0")}</span>
-          <span>
-            <span class="title block">${c.name}</span>
-            <span class="meta block mt-0.5 line-clamp-1">${c.blurb}</span>
-          </span>
-          <span class="meta">$${c.price}/mo</span>
+          <span class="name">${c.name}</span>
         </button>`,
         )
         .join("");
@@ -358,7 +365,7 @@
         const cap = caps.find((c) => c.id === row.dataset.id);
         if (cap) renderDetail(cap);
       });
-      renderDetail(active);
+      paint(active);
 
       async function loadNews() {
         const host = document.getElementById("news-feed");
@@ -387,7 +394,7 @@
                 <p class="text-xs text-mute mb-1">${item.source || "Intel"}</p>
                 <h3>${item.title}</h3>
               </div>
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary shrink-0 !py-2 !px-3 text-xs">View report</a>
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary shrink-0 !py-2 !px-4 text-xs">View report</a>
             </article>`,
             )
             .join("");
@@ -401,7 +408,7 @@
                 <p class="text-xs text-mute mb-1">${item.source}</p>
                 <h3>${item.title}</h3>
               </div>
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary shrink-0 !py-2 !px-3 text-xs">View report</a>
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary shrink-0 !py-2 !px-4 text-xs">View report</a>
             </article>`,
             )
             .join("");

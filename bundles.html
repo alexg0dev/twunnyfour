@@ -6,16 +6,16 @@
     <title>Bundles — TwunnyFour</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#9499a8" },
+            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8b91a3" },
             fontFamily: {
               display: ['"Instrument Serif"', "Georgia", "serif"],
-              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              sans: ['"Schibsted Grotesk"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -25,15 +25,15 @@
   </head>
   <body class="bg-ink text-white font-sans">
     <header class="site-nav">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+      <div class="nav-inner">
         <a href="index.html" class="logo">Twunny<em>Four</em></a>
-        <nav class="hidden items-center gap-7 md:flex">
+        <nav class="nav-links" aria-label="Primary">
           <a href="index.html" class="nav-link">Home</a>
           <a href="email.html" class="nav-link">Email</a>
           <a href="endpoint.html" class="nav-link">Endpoint</a>
           <a href="pricing.html" class="nav-link">Pricing</a>
         </nav>
-        <div class="flex items-center gap-2">
+        <div class="nav-actions">
           <a href="login.html" data-auth-link class="icon-btn" aria-label="Login">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
           </a>
@@ -45,40 +45,45 @@
       </div>
     </header>
 
-    <main class="mx-auto max-w-6xl px-5 py-20 md:py-28">
-      <div class="stagger max-w-2xl">
-        <p class="eyebrow">Marketplace</p>
-        <h1 class="mt-3 font-display text-5xl md:text-6xl">Security bundles</h1>
-        <p class="mt-5 prose-muted">
-          TwunnyFour organizes products into two full lines. Open a product page for deep explanations,
-          deployment guidance, plans, and FAQs.
-        </p>
-      </div>
-      <div class="mt-14 grid gap-6 md:grid-cols-2">
-        <a href="email.html" class="tile !p-8 group hover:border-accent/45">
-          <p class="eyebrow">Product line</p>
-          <h2 class="mt-3 font-display text-4xl">Email security</h2>
-          <p class="mt-4 text-sm leading-relaxed text-mute">
-            Gateway, advanced anti-BEC, DMARC, awareness training, and collaboration security for Microsoft 365 and Google Workspace.
+    <main class="section">
+      <div class="container">
+        <div class="stagger max-w-2xl">
+          <p class="eyebrow">Marketplace</p>
+          <h1 class="mt-3 font-display text-5xl md:text-6xl m-0">Security bundles</h1>
+          <p class="mt-5 prose-muted">
+            TwunnyFour organizes products into two full lines. Open a product page for deep explanations,
+            deployment guidance, plans, and FAQs.
           </p>
-          <span class="mt-8 text-sm font-semibold text-white/70 group-hover:text-accent">Open email product →</span>
-        </a>
-        <a href="endpoint.html" class="tile !p-8 group hover:border-accent/45">
-          <p class="eyebrow">Product line</p>
-          <h2 class="mt-3 font-display text-4xl">Endpoint security</h2>
-          <p class="mt-4 text-sm leading-relaxed text-mute">
-            NGAV, EDR/XDR, managed hunting, identity protection, and MDR for laptops, servers, and mobile fleets.
-          </p>
-          <span class="mt-8 text-sm font-semibold text-white/70 group-hover:text-accent">Open endpoint product →</span>
-        </a>
+        </div>
+        <div class="mt-14 grid gap-5 md:grid-cols-2">
+          <a href="email.html" class="tile tile-link !p-8 group">
+            <h2 class="font-display text-4xl m-0">Email security</h2>
+            <p class="mt-4 text-sm leading-relaxed text-mute">
+              Gateway, advanced anti-BEC, DMARC, awareness training, and collaboration security for Microsoft 365 and Google Workspace.
+            </p>
+            <span class="mt-8 text-sm font-medium text-white/55 group-hover:text-white transition-colors">Open email product →</span>
+          </a>
+          <a href="endpoint.html" class="tile tile-link !p-8 group">
+            <h2 class="font-display text-4xl m-0">Endpoint security</h2>
+            <p class="mt-4 text-sm leading-relaxed text-mute">
+              NGAV, EDR/XDR, managed hunting, identity protection, and MDR for laptops, servers, and mobile fleets.
+            </p>
+            <span class="mt-8 text-sm font-medium text-white/55 group-hover:text-white transition-colors">Open endpoint product →</span>
+          </a>
+        </div>
       </div>
     </main>
 
-    <footer class="site-footer px-5 py-8 text-center text-xs text-white/30">© <span id="year"></span> TwunnyFour</footer>
+    <footer class="site-footer">
+      <div class="footer-simple">© <span id="year"></span> TwunnyFour</div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
-    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    <script src="js/motion.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
