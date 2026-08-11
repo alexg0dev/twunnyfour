@@ -105,6 +105,12 @@ input {
   background: rgba(7, 8, 12, 0.72);
   backdrop-filter: blur(20px) saturate(1.3);
   border-bottom: 1px solid var(--line);
+  transition: height 0.3s var(--ease), background 0.3s, box-shadow 0.3s;
+}
+.site-nav.is-scrolled {
+  height: 60px;
+  background: rgba(7, 8, 12, 0.9);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
 .nav-inner {
@@ -242,11 +248,29 @@ input {
   transform: translateY(-2px);
 }
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(180deg, #ff2424 0%, var(--red) 100%);
   color: #fff;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 12px 32px rgba(230, 0, 0, 0.35);
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.22) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: none;
+}
+.btn-primary:hover::after {
+  animation: btn-shine 0.75s var(--ease);
+}
+@keyframes btn-shine {
+  to {
+    transform: translateX(120%);
+  }
 }
 .btn-primary:hover {
   box-shadow:
@@ -385,10 +409,21 @@ input {
 }
 .hero__brand em {
   font-style: normal;
-  background: linear-gradient(120deg, #fff 20%, var(--red-bright) 55%, var(--red) 100%);
+  background: linear-gradient(120deg, #fff 10%, var(--red-bright) 45%, var(--red) 70%, #ff8a8a 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: brand-shine 6s ease-in-out infinite;
+}
+@keyframes brand-shine {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
 }
 
 .hero__title {
@@ -470,18 +505,21 @@ input {
   overflow: hidden;
   opacity: 0;
   animation: hero-in 1s var(--ease) 0.18s forwards;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
-@media (min-width: 1000px) {
-  .hero__viz {
-    min-height: 460px;
-  }
-}
-
 .hero__viz-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  transition: transform 0.45s var(--ease);
+  will-change: transform;
+}
+@media (min-width: 1000px) {
+  .hero__viz {
+    min-height: 460px;
+  }
 }
 
 .hero__viz-footer {
@@ -960,6 +998,135 @@ input {
   display: none;
 }
 
+/* Support chat */
+.tw24-chat-toggle {
+  position: fixed;
+  right: 1.35rem;
+  bottom: 1.35rem;
+  z-index: 70;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ff2424, var(--red));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 14px 40px rgba(230, 0, 0, 0.4);
+  transition: transform 0.25s var(--ease);
+}
+.tw24-chat-toggle:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+.tw24-chat-panel {
+  position: fixed;
+  right: 1.35rem;
+  bottom: 5.4rem;
+  z-index: 70;
+  width: min(92vw, 360px);
+  border-radius: 18px;
+  border: 1px solid var(--line-strong);
+  background: rgba(12, 14, 20, 0.94);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.97);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.tw24-chat-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.tw24-chat-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(180deg, rgba(230, 0, 0, 0.95), #c40000);
+}
+.tw24-chat-head strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+}
+.tw24-chat-head span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+.tw24-chat-close {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.tw24-chat-log {
+  height: 250px;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.tw24-bubble {
+  display: inline-block;
+  max-width: 85%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+.tw24-bubble--bot {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.tw24-bubble--user {
+  background: var(--red);
+  color: #fff;
+}
+.tw24-chat-form {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+.tw24-chat-form input {
+  flex: 1;
+  min-width: 0;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  padding: 0.65rem 0.8rem;
+  outline: none;
+}
+.tw24-chat-form input:focus {
+  border-color: rgba(230, 0, 0, 0.55);
+}
+.tw24-chat-form button {
+  border: 0;
+  border-radius: 10px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  padding: 0 0.9rem;
+  cursor: pointer;
+}
+
+.mag {
+  display: inline-block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__copy,
   .hero__viz,
@@ -967,7 +1134,9 @@ input {
   .btn,
   .node-pulse,
   .link-flow,
-  .hero__pill-dot {
+  .hero__pill-dot,
+  .hero__brand em,
+  .btn-primary::after {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
