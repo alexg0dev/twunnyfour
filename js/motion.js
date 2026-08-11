@@ -18,7 +18,7 @@
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.12, rootMargin: "0px 0px -5% 0px" },
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   });
