@@ -145,7 +145,7 @@
     root.id = "tw24-chat";
     root.innerHTML = `
       <button type="button" id="tw24-chat-toggle" aria-label="Open support chat"
-        class="fixed bottom-6 right-6 z-[70] h-14 w-14 rounded-full bg-[#e60000] text-white shadow-[0_0_40px_rgba(230,0,0,.45)] grid place-items-center hover:scale-105 transition-transform">
+        class="fixed bottom-6 right-6 z-[70] h-14 w-14 rounded-full bg-[#e60000] text-white shadow-lg grid place-items-center hover:brightness-110 transition">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
         </svg>

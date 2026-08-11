@@ -6,63 +6,62 @@
     <title>Login — TwunnyFour</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: { ink: "#0a0b10", signal: "#e60000", mute: "#9aa0ae" },
-            fontFamily: { display: ["Syne", "sans-serif"], sans: ["Manrope", "sans-serif"] },
+            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#9499a8" },
+            fontFamily: {
+              display: ['"Instrument Serif"', "Georgia", "serif"],
+              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            },
           },
         },
       };
     </script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body class="bg-ink text-white antialiased">
-    <div class="noise" aria-hidden="true"></div>
-
-    <header class="nav-blur sticky top-0 z-40">
-      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
-        <a href="index.html" class="font-display text-xl tracking-tight">Twunny<span class="text-signal">Four</span></a>
-        <nav class="hidden items-center gap-8 text-sm font-medium text-white/70 md:flex">
-          <a href="index.html" class="hover:text-white transition">Home</a>
-          <a href="bundles.html" class="hover:text-white transition">Bundles</a>
-          <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+  <body class="bg-ink text-white font-sans">
+    <header class="site-nav">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+        <a href="index.html" class="logo">Twunny<em>Four</em></a>
+        <nav class="hidden items-center gap-7 md:flex">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="email.html" class="nav-link">Email</a>
+          <a href="endpoint.html" class="nav-link">Endpoint</a>
+          <a href="pricing.html" class="nav-link">Pricing</a>
         </nav>
-        <a href="cart.html" class="relative grid h-10 w-10 place-items-center rounded-full border border-white/10" aria-label="Cart">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
-          <span data-cart-count class="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-signal px-1 text-[10px] font-bold opacity-0">0</span>
+        <a href="cart.html" class="icon-btn relative" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
+          <span data-cart-count class="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-[10px] font-semibold opacity-0">0</span>
         </a>
       </div>
     </header>
 
     <main class="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-5 py-16">
-      <div class="card-line rounded-2xl p-7">
-        <h1 class="font-display text-3xl font-bold">Account</h1>
-        <p class="mt-2 text-sm text-mute">Sign in to sync your cart and deploy capabilities.</p>
+      <div class="tile !p-7">
+        <h1 class="font-display text-3xl">Account</h1>
+        <p class="mt-2 text-sm text-mute">Sign in to sync your cart and deploy capabilities across devices.</p>
 
         <div id="signed-out" class="mt-8">
           <div class="mb-5 flex rounded-lg border border-white/10 p-1 text-sm">
-            <button type="button" data-mode="signin" class="mode-btn flex-1 rounded-md bg-signal py-2 font-semibold">Sign in</button>
+            <button type="button" data-mode="signin" class="mode-btn flex-1 rounded-md bg-accent py-2 font-semibold">Sign in</button>
             <button type="button" data-mode="signup" class="mode-btn flex-1 rounded-md py-2 font-semibold text-white/70">Sign up</button>
           </div>
           <form id="auth-form" class="space-y-4">
             <div>
               <label class="text-xs text-mute">Email</label>
-              <input id="email" type="email" required class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-signal" />
+              <input id="email" type="email" required class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-accent" />
             </div>
             <div>
               <label class="text-xs text-mute">Password</label>
-              <input id="password" type="password" required minlength="6" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-signal" />
+              <input id="password" type="password" required minlength="6" class="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-sm outline-none focus:border-accent" />
             </div>
             <p id="auth-error" class="hidden text-sm text-red-300"></p>
             <p id="auth-ok" class="hidden text-sm text-emerald-300"></p>
-            <button id="auth-submit" class="btn-red w-full rounded-lg py-3 text-sm">Sign in</button>
+            <button id="auth-submit" class="btn btn-primary w-full">Sign in</button>
           </form>
         </div>
 
@@ -70,8 +69,8 @@
           <p class="text-sm text-mute">Signed in as</p>
           <p data-user-email class="mt-1 font-semibold"></p>
           <div class="mt-6 flex flex-col gap-3">
-            <a href="cart.html" class="btn-red rounded-lg py-3 text-center text-sm">Open cart</a>
-            <button id="signout" class="btn-ghost rounded-lg py-3 text-sm">Sign out</button>
+            <a href="cart.html" class="btn btn-primary">Open cart</a>
+            <button id="signout" class="btn btn-ghost">Sign out</button>
           </div>
         </div>
       </div>
@@ -85,7 +84,6 @@
       const params = new URLSearchParams(location.search);
       const next = params.get("next") || "cart.html";
       let mode = "signin";
-
       const out = document.getElementById("signed-out");
       const inn = document.getElementById("signed-in");
       const err = document.getElementById("auth-error");
@@ -97,15 +95,12 @@
         submit.textContent = m === "signin" ? "Sign in" : "Create account";
         document.querySelectorAll(".mode-btn").forEach((b) => {
           const active = b.dataset.mode === m;
-          b.classList.toggle("bg-signal", active);
+          b.classList.toggle("bg-accent", active);
           b.classList.toggle("text-white", active);
           b.classList.toggle("text-white/70", !active);
         });
       }
-
-      document.querySelectorAll(".mode-btn").forEach((b) =>
-        b.addEventListener("click", () => setMode(b.dataset.mode)),
-      );
+      document.querySelectorAll(".mode-btn").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
 
       async function refresh() {
         const session = await window.TW24.cart.getSession();
@@ -128,10 +123,9 @@
           } else {
             const { data, error } = await window.TW24.supabase.auth.signUp({ email, password });
             if (error) throw error;
-            if (data.session) {
-              location.href = next;
-            } else {
-              ok.textContent = "Account created. Check your email to confirm, then sign in.";
+            if (data.session) location.href = next;
+            else {
+              ok.textContent = "Account created. Confirm your email if required, then sign in.";
               ok.classList.remove("hidden");
               setMode("signin");
             }
@@ -148,7 +142,6 @@
         await window.TW24.supabase.auth.signOut();
         await refresh();
       };
-
       refresh();
     </script>
   </body>
