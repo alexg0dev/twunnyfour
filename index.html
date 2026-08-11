@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,8 +21,8 @@
           extend: {
             colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8a90a2" },
             fontFamily: {
-              display: ['"Instrument Serif"', "Georgia", "serif"],
-              sans: ['"Schibsted Grotesk"', "system-ui", "sans-serif"],
+              display: ['"Outfit"', "system-ui", "sans-serif"],
+              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -64,21 +64,40 @@
 
     <main>
       <section class="hero" aria-label="Hero">
-        <div class="hero__copy">
-          <h1 class="hero__brand">Twunny<em>Four</em></h1>
-          <p class="hero__line">Modern cybersecurity for email &amp; endpoints.</p>
-          <p class="hero__support">
-            Protection engineered for the surfaces where business actually runs—inbox and device—without operational chaos.
-          </p>
-          <div class="hero__cta">
-            <span class="mag"><a href="pricing.html" class="btn btn-primary">View pricing</a></span>
-            <span class="mag"><a href="#capabilities" class="btn btn-secondary">Explore capabilities</a></span>
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <p class="hero__brand-line"><strong>Twunny<em>Four</em></strong> Enterprise platform</p>
+            <h1 class="hero__title">Modern cybersecurity for email &amp; endpoints</h1>
+            <p class="hero__tag">We keep secure.</p>
+            <p class="hero__support">
+              AI-powered protection that blocks phishing, ransomware, and data breaches.
+              Enterprise-grade security, simplified for your organization.
+            </p>
+            <div class="hero__cta">
+              <a href="pricing.html" class="btn btn-primary">View pricing</a>
+              <a href="#capabilities" class="btn btn-secondary">Explore capabilities</a>
+            </div>
+            <div class="hero__stats">
+              <div class="hero__stat"><strong>20</strong><span>Security capabilities</span></div>
+              <div class="hero__stat"><strong>Email</strong><span>Gateway &amp; collaboration</span></div>
+              <div class="hero__stat"><strong>Endpoint</strong><span>NGAV, EDR &amp; MDR</span></div>
+            </div>
           </div>
-        </div>
-        <div class="hero__plane" aria-hidden="true">
-          <div class="hero__plane-inner">
-            <div class="hero__plane-sheen"></div>
-            <span class="hero__plane-mark">24</span>
+          <div class="hero__visual" aria-hidden="true">
+            <div class="hero__visual-bar"></div>
+            <div class="hero__visual-panel">
+              <div>
+                <p class="kicker">Security posture</p>
+                <h3>Defensive perimeter</h3>
+              </div>
+              <div class="hero__visual-metrics">
+                <div><span>Identity protection</span><strong>Active</strong></div>
+                <div><span>Phishing defense</span><strong>Active</strong></div>
+                <div><span>Endpoint prevention</span><strong>Active</strong></div>
+                <div><span>Incident response</span><strong>Ready</strong></div>
+              </div>
+            </div>
+            <span class="hero__visual-mark">24</span>
           </div>
         </div>
       </section>
@@ -171,11 +190,10 @@
       <section id="capabilities" class="section" data-chapter>
         <div class="container">
           <div class="section-head reveal">
-            <p class="eyebrow">Capability theatre</p>
-            <h2>Twenty controls. One stage.</h2>
+            <p class="eyebrow">Capabilities</p>
+            <h2>Select from 20 core security controls</h2>
             <p class="prose-muted">
-              Browse the catalog like a product index. Select a control to open its brief—then deploy
-              to cart when the fit is clear.
+              Strengthen your defensive perimeter. Choose a capability to review controls and pricing, then deploy to cart.
             </p>
           </div>
           <div class="theatre reveal">

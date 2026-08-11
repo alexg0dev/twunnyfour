@@ -1,75 +1,17 @@
 /**
- * TwunnyFour signature motion
- * 1) Hero char + plane intro
- * 2) Magnetic buttons
- * 3) Scroll-linked blur reveals
- * 4) Red plane parallax
- * 5) Theatre stage transitions (exported)
+ * TwunnyFour motion — restrained, product-site quality
  */
 (function () {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function splitBrand(el) {
-    if (!el || el.dataset.split === "1") return;
-    const html = el.innerHTML;
-    // Preserve <em>Four</em> structure
-    const parts = [];
-    el.childNodes.forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        [...node.textContent].forEach((ch) => {
-          if (ch === " ") parts.push('<span class="char" style="width:0.28em">&nbsp;</span>');
-          else parts.push(`<span class="char">${ch}</span>`);
-        });
-      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "EM") {
-        const inner = [...node.textContent]
-          .map((ch) => `<span class="char">${ch}</span>`)
-          .join("");
-        parts.push(`<em>${inner}</em>`);
-      }
-    });
-    el.innerHTML = parts.join("");
-    el.querySelectorAll(".char").forEach((c, i) => {
-      c.style.animationDelay = `${0.08 + i * 0.035}s`;
-    });
-    el.dataset.split = "1";
-  }
-
   function initHero() {
     const hero = document.querySelector(".hero");
     if (!hero) return;
-    const brand = hero.querySelector(".hero__brand");
-    splitBrand(brand);
-    requestAnimationFrame(() => {
-      hero.classList.add("is-ready");
-    });
-
-    const plane = hero.querySelector(".hero__plane-inner");
-    if (plane && !reduce) {
-      window.addEventListener(
-        "scroll",
-        () => {
-          const y = Math.min(window.scrollY, 420);
-          plane.style.transform = `translateY(${y * 0.12}px) scale(${1 + y * 0.00008})`;
-        },
-        { passive: true },
-      );
-    }
+    requestAnimationFrame(() => hero.classList.add("is-ready"));
   }
 
   function initMagnetic() {
-    if (reduce || window.matchMedia("(pointer: coarse)").matches) return;
-    document.querySelectorAll(".mag").forEach((wrap) => {
-      const btn = wrap.querySelector(".btn") || wrap;
-      wrap.addEventListener("mousemove", (e) => {
-        const r = wrap.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.28}px)`;
-      });
-      wrap.addEventListener("mouseleave", () => {
-        btn.style.transform = "";
-      });
-    });
+    /* Disabled — felt gimmicky for enterprise */
   }
 
   function initReveals() {
