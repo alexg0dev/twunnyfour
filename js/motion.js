@@ -5,9 +5,21 @@
     setTimeout(() => {
       paint();
       body.classList.remove("is-swap");
-    }, 80);
+    }, 90);
   };
+
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   });
 })();
