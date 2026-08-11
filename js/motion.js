@@ -1,19 +1,7 @@
 /**
- * TwunnyFour motion — restrained, product-site quality
+ * TwunnyFour motion — subtle scroll reveals only
  */
 (function () {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function initHero() {
-    const hero = document.querySelector(".hero");
-    if (!hero) return;
-    requestAnimationFrame(() => hero.classList.add("is-ready"));
-  }
-
-  function initMagnetic() {
-    /* Disabled — felt gimmicky for enterprise */
-  }
-
   function initReveals() {
     const io = new IntersectionObserver(
       (entries) => {
@@ -24,7 +12,7 @@
           }
         });
       },
-      { threshold: 0.14, rootMargin: "0px 0px -6% 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -5% 0px" },
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   }
@@ -33,8 +21,6 @@
     const bar = document.querySelector("[data-chapter-bar]");
     if (!bar) return;
     const fill = bar.querySelector("span");
-    const sections = [...document.querySelectorAll("[data-chapter]")];
-    if (!sections.length) return;
     const onScroll = () => {
       const doc = document.documentElement;
       const max = doc.scrollHeight - window.innerHeight;
@@ -45,29 +31,21 @@
     onScroll();
   }
 
-  window.TW24_theatreSwap = function (contentEl, watermarkEl, renderFn) {
-    if (!contentEl) return renderFn();
-    contentEl.classList.remove("is-in");
-    contentEl.classList.add("is-swap");
-    const stage = contentEl.closest(".theatre-stage");
-    if (stage) stage.classList.add("is-swap");
+  window.TW24_theatreSwap = function (body, mark, paint) {
+    if (!body) {
+      paint();
+      return;
+    }
+    body.classList.remove("is-in");
+    body.classList.add("is-swap");
     setTimeout(() => {
-      renderFn();
-      contentEl.classList.remove("is-swap");
-      contentEl.classList.add("is-in");
-      if (stage) stage.classList.remove("is-swap");
-      if (watermarkEl) {
-        watermarkEl.style.transform = "translateY(-8px)";
-        requestAnimationFrame(() => {
-          watermarkEl.style.transform = "";
-        });
-      }
-    }, reduce ? 0 : 200);
+      paint();
+      body.classList.remove("is-swap");
+      body.classList.add("is-in");
+    }, 120);
   };
 
   document.addEventListener("DOMContentLoaded", () => {
-    initHero();
-    initMagnetic();
     initReveals();
     initChapterBar();
   });

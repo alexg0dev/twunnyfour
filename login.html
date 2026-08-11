@@ -6,7 +6,7 @@
     <title>Login — TwunnyFour</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -14,8 +14,8 @@
           extend: {
             colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8b91a3" },
             fontFamily: {
-              display: ['"Instrument Serif"', "Georgia", "serif"],
-              sans: ['"Schibsted Grotesk"', "system-ui", "sans-serif"],
+              display: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
+              sans: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -70,7 +70,7 @@
           <p data-user-email class="mt-1 font-semibold"></p>
           <div class="mt-6 flex flex-col gap-3">
             <a href="cart.html" class="btn btn-primary">Open cart</a>
-            <button id="signout" class="btn btn-ghost">Sign out</button>
+            <button id="signout" class="btn btn-secondary">Sign out</button>
           </div>
         </div>
       </div>

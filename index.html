@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,10 +19,10 @@
       tailwind.config = {
         theme: {
           extend: {
-            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8a90a2" },
+            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#a8adb8" },
             fontFamily: {
-              display: ['"Outfit"', "system-ui", "sans-serif"],
-              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              display: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
+              sans: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -66,8 +66,8 @@
       <section class="hero" aria-label="Hero">
         <div class="hero__inner">
           <div class="hero__copy">
-            <p class="hero__brand-line"><strong>Twunny<em>Four</em></strong> Enterprise platform</p>
-            <h1 class="hero__title">Modern cybersecurity for email &amp; endpoints</h1>
+            <h1 class="hero__brand">Twunny<em>Four</em></h1>
+            <p class="hero__title">Modern cybersecurity for email &amp; endpoints</p>
             <p class="hero__tag">We keep secure.</p>
             <p class="hero__support">
               AI-powered protection that blocks phishing, ransomware, and data breaches.
@@ -77,27 +77,11 @@
               <a href="pricing.html" class="btn btn-primary">View pricing</a>
               <a href="#capabilities" class="btn btn-secondary">Explore capabilities</a>
             </div>
-            <div class="hero__stats">
-              <div class="hero__stat"><strong>20</strong><span>Security capabilities</span></div>
-              <div class="hero__stat"><strong>Email</strong><span>Gateway &amp; collaboration</span></div>
-              <div class="hero__stat"><strong>Endpoint</strong><span>NGAV, EDR &amp; MDR</span></div>
+            <div class="hero__meta">
+              <div><strong>20 capabilities</strong><span>Build your perimeter</span></div>
+              <div><strong>Email security</strong><span>Gateway to collaboration</span></div>
+              <div><strong>Endpoint security</strong><span>NGAV, EDR, and MDR</span></div>
             </div>
-          </div>
-          <div class="hero__visual" aria-hidden="true">
-            <div class="hero__visual-bar"></div>
-            <div class="hero__visual-panel">
-              <div>
-                <p class="kicker">Security posture</p>
-                <h3>Defensive perimeter</h3>
-              </div>
-              <div class="hero__visual-metrics">
-                <div><span>Identity protection</span><strong>Active</strong></div>
-                <div><span>Phishing defense</span><strong>Active</strong></div>
-                <div><span>Endpoint prevention</span><strong>Active</strong></div>
-                <div><span>Incident response</span><strong>Ready</strong></div>
-              </div>
-            </div>
-            <span class="hero__visual-mark">24</span>
           </div>
         </div>
       </section>

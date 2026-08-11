@@ -6,16 +6,16 @@
     <title>Pricing — TwunnyFour</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#8a90a2" },
+            colors: { ink: "#0a0b10", accent: "#e60000", mute: "#a8adb8" },
             fontFamily: {
-              display: ['"Instrument Serif"', "Georgia", "serif"],
-              sans: ['"Schibsted Grotesk"', "system-ui", "sans-serif"],
+              display: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
+              sans: ['"IBM Plex Sans"', "system-ui", "sans-serif"],
             },
           },
         },
@@ -65,7 +65,7 @@
           </p>
         </div>
 
-        <div id="plans" class="mt-16 grid gap-5 lg:grid-cols-3 reveal"></div>
+        <div id="plans" class="mt-16 grid gap-5 lg:grid-cols-3 reveal reveal-stagger"></div>
 
         <section class="reveal mt-24 grid gap-12 lg:grid-cols-2">
           <div>
@@ -121,13 +121,13 @@
       document.getElementById("plans").innerHTML = window.TW24_PRODUCTS.plans
         .map(
           (p) => `
-        <article class="tile relative ${p.highlighted ? "is-featured" : ""}">
-          ${p.highlighted ? `<span class="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-[10px] font-semibold tracking-wide">Most chosen</span>` : ""}
-          <h2 class="font-display text-3xl">${p.name}</h2>
+        <article class="plan-card ${p.highlighted ? "is-featured" : ""}">
+          ${p.highlighted ? `<span class="badge">Most chosen</span>` : ""}
+          <h2 class="text-2xl">${p.name}</h2>
           <p class="mt-2 text-sm text-mute">${p.blurb}</p>
-          <p class="mt-7 font-display text-5xl">$${p.price}<span class="text-base text-mute"> / user / mo</span></p>
+          <p class="mt-7 text-5xl font-semibold tracking-tight">$${p.price}<span class="text-base font-medium text-mute"> / user / mo</span></p>
           <ul class="feature-list mt-8 flex-1">${p.features.map((f) => `<li>${f}</li>`).join("")}</ul>
-          <span class="mag mt-8 w-full block"><button data-add-cart="${p.id}" class="${p.highlighted ? "btn btn-primary" : "btn btn-ghost"} w-full">${p.highlighted ? "Select " + p.name : "Select " + p.name}</button></span>
+          <button data-add-cart="${p.id}" class="${p.highlighted ? "btn btn-primary" : "btn btn-secondary"} mt-8 w-full">Select ${p.name}</button>
         </article>`,
         )
         .join("");
