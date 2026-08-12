@@ -843,6 +843,16 @@ svg {
   background: rgba(230, 0, 0, 0.32);
 }
 
+.tf-product-hero__bg::after,
+.tf-page-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 90% 20%, rgba(230, 0, 0, 0.22), transparent 55%),
+    linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+}
+
 .tf-product-hero__inner,
 .tf-hero-product__inner,
 .tf-page-hero__inner {
