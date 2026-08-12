@@ -211,9 +211,15 @@
         a.setAttribute("href", "login.html");
         a.setAttribute("title", "Account / Sign out");
         a.dataset.signedIn = "1";
+        if (a.classList.contains("tf-nav__text") || a.textContent.trim()) {
+          a.textContent = "Account";
+        }
       } else {
         a.setAttribute("href", "login.html");
         a.dataset.signedIn = "0";
+        if (a.classList.contains("tf-nav__text") || !a.querySelector("svg")) {
+          a.textContent = "Sign in";
+        }
       }
     });
     document.querySelectorAll("[data-user-email]").forEach((el) => {
