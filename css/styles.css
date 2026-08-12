@@ -1181,6 +1181,328 @@ svg {
 .tf-gap-2 { gap: 0.75rem; }
 .tf-gap-3 { gap: 1.25rem; }
 .tf-shrink-0 { flex-shrink: 0; }
+.tf-hidden { display: none !important; }
+
+/* ——— Auth / Sign in ——— */
+.tf-auth {
+  position: relative;
+  min-height: calc(100svh - var(--nav));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem;
+  overflow: hidden;
+}
+
+.tf-auth__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% -10%, rgba(230, 0, 0, 0.22), transparent 60%),
+    radial-gradient(ellipse 40% 35% at 90% 80%, rgba(230, 0, 0, 0.1), transparent 55%),
+    var(--bg);
+}
+
+.tf-auth__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.5;
+  animation: orb-float 16s ease-in-out infinite;
+}
+
+.tf-auth__orb--a {
+  width: min(48vw, 420px);
+  height: min(48vw, 420px);
+  top: -12%;
+  right: 8%;
+  background: rgba(230, 0, 0, 0.4);
+}
+
+.tf-auth__orb--b {
+  width: min(34vw, 300px);
+  height: min(34vw, 300px);
+  bottom: 5%;
+  left: 4%;
+  background: rgba(230, 0, 0, 0.16);
+  animation-delay: -6s;
+}
+
+.tf-auth__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 55% 50% at 50% 40%, #000 15%, transparent 70%);
+}
+
+.tf-auth__shell {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tf-auth__intro {
+  text-align: center;
+}
+
+.tf-auth__brand {
+  margin-top: 0.65rem;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 8vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.tf-auth__brand span {
+  color: var(--red);
+}
+
+.tf-auth__lead {
+  margin-top: 0.85rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.tf-auth__panel {
+  padding: 1.65rem 1.5rem 1.75rem;
+  border-radius: 22px;
+  border: 1px solid var(--line-2);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.055), rgba(17, 20, 29, 0.92) 40%);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+}
+
+.tf-auth__heading {
+  margin-top: 1.35rem;
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.tf-auth__sub {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.tf-auth__email {
+  margin-top: 0.55rem;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  word-break: break-all;
+}
+
+.tf-auth__form {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tf-auth__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.tf-auth__foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--dim);
+}
+
+.tf-auth__foot a {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.tf-auth__foot a:hover {
+  color: #fff;
+}
+
+.tf-auth__rise {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: rise 0.95s var(--d, 0s) var(--ease) forwards;
+}
+
+.tf-mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+}
+
+.tf-mode-toggle button {
+  border: 0;
+  border-radius: 999px;
+  min-height: 2.45rem;
+  background: transparent;
+  color: var(--dim);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 0.3s var(--ease), color 0.25s, transform 0.25s var(--ease);
+}
+
+.tf-mode-toggle button:hover {
+  color: #fff;
+}
+
+.tf-mode-toggle button.is-active {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(230, 0, 0, 0.35);
+}
+
+.tf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tf-field__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tf-field__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.tf-field__hint {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tf-field__hint:hover {
+  color: #fff;
+}
+
+.tf-field__input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line-2);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.tf-field__input::placeholder {
+  color: rgba(152, 160, 176, 0.55);
+  font-weight: 400;
+}
+
+.tf-field__input:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.tf-field__input:focus {
+  border-color: rgba(230, 0, 0, 0.65);
+  box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.tf-message {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.tf-message--error {
+  background: rgba(230, 0, 0, 0.12);
+  border: 1px solid rgba(230, 0, 0, 0.35);
+  color: #ffb4b4;
+}
+
+.tf-message--success {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line-2);
+  color: #d5dce8;
+}
+
+.tf-btn.is-loading {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.tf-btn.is-loading .tf-btn__label {
+  opacity: 0;
+}
+
+.tf-btn__spin {
+  display: none;
+  position: absolute;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+
+.tf-btn.is-loading .tf-btn__spin {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tf-auth__rise,
+  .tf-auth__orb {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
 @media (min-width: 760px) {
   .tf-flex.tf-flex-col.tf-items-center.tf-justify-between {
