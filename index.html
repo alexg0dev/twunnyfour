@@ -8,9 +8,8 @@
       name="description"
       content="Enterprise cybersecurity for email and endpoints. Stop phishing, ransomware, and identity compromise before they spread."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -25,6 +24,7 @@
         </nav>
         <div class="tf-nav__actions">
           <a href="login.html" data-auth-link class="tf-nav__text">Sign in</a>
+          <a href="pricing.html" class="tf-nav__cta">Get started</a>
           <a href="cart.html" class="tf-nav__cart" aria-label="Cart">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
             <span data-cart-count class="tf-cart-badge">0</span>
@@ -49,14 +49,29 @@
         <div class="tf-hero__layout">
           <div class="tf-hero__content">
             <h1 class="tf-hero__brand">Twunny<span>Four</span></h1>
-            <p class="tf-hero__headline">Protect email and endpoints before attackers reach them.</p>
+            <p class="tf-hero__headline">Modern cybersecurity for email &amp; endpoints</p>
             <p class="tf-hero__support">
-              Stop phishing, ransomware, and identity compromise with clear products for Microsoft 365, Google Workspace, and modern device fleets.
+              AI-powered protection that blocks phishing, ransomware, and data breaches.
+              Enterprise-grade security, simplified for your organization.
             </p>
             <div class="tf-hero__cta">
               <a href="pricing.html" class="tf-btn tf-btn--primary">View pricing</a>
               <a href="#capabilities" class="tf-btn tf-btn--secondary">Explore capabilities</a>
             </div>
+          </div>
+          <div class="tf-hero__portals">
+            <a href="email.html" class="tf-portal">
+              <p class="tf-portal__label">Product</p>
+              <h2 class="tf-portal__title">Email security</h2>
+              <p class="tf-portal__text">Block phishing, spoofing, BEC, and collaboration threats across Microsoft 365 and Google Workspace.</p>
+              <p class="tf-portal__go">Open Email →</p>
+            </a>
+            <a href="endpoint.html" class="tf-portal">
+              <p class="tf-portal__label">Product</p>
+              <h2 class="tf-portal__title">Endpoint security</h2>
+              <p class="tf-portal__text">NGAV, EDR, managed hunting, and MDR for laptops, servers, and the devices that hold the business.</p>
+              <p class="tf-portal__go">Open Endpoint →</p>
+            </a>
           </div>
         </div>
       </section>
