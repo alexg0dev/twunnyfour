@@ -106,13 +106,13 @@
     const session = await getSession();
     if (!session) {
       el.textContent = "0";
-      el.classList.add("opacity-0");
+      el.classList.remove("is-visible");
       return;
     }
     const items = await getCart();
     const count = items.reduce((n, i) => n + i.quantity, 0);
     el.textContent = String(count);
-    el.classList.toggle("opacity-0", count === 0);
+    el.classList.toggle("is-visible", count > 0);
   }
 
   function toast(message, isError) {
@@ -120,16 +120,10 @@
     if (!host) {
       host = document.createElement("div");
       host.id = "tw24-toast";
-      host.className =
-        "fixed bottom-24 left-1/2 z-[80] -translate-x-1/2 flex flex-col gap-2 pointer-events-none";
       document.body.appendChild(host);
     }
     const node = document.createElement("div");
-    node.className = `pointer-events-auto rounded-md px-4 py-3 text-sm font-medium shadow-lg border ${
-      isError
-        ? "bg-[#1a1010] border-red-500/40 text-red-200"
-        : "bg-[#12141c] border-white/10 text-white"
-    }`;
+    node.className = isError ? "is-error" : "";
     node.textContent = message;
     host.appendChild(node);
     setTimeout(() => {
@@ -144,21 +138,21 @@
     const root = document.createElement("div");
     root.id = "tw24-chat";
     root.innerHTML = `
-      <button type="button" id="tw24-chat-toggle" class="tw24-chat-toggle" aria-label="Open support chat">
+      <button type="button" id="tw24-chat-toggle" class="tf-chat-toggle" aria-label="Open support chat">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
           <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
         </svg>
       </button>
-      <div id="tw24-chat-panel" class="tw24-chat-panel">
-        <div class="tw24-chat-head">
+      <div id="tw24-chat-panel" class="tf-chat-panel">
+        <div class="tf-chat-head">
           <div>
             <strong>Support</strong>
             <span>Usually replies in under a minute</span>
           </div>
-          <button type="button" id="tw24-chat-close" class="tw24-chat-close" aria-label="Close">&times;</button>
+          <button type="button" id="tw24-chat-close" class="tf-chat-close" aria-label="Close">&times;</button>
         </div>
-        <div id="tw24-chat-log" class="tw24-chat-log"></div>
-        <form id="tw24-chat-form" class="tw24-chat-form">
+        <div id="tw24-chat-log" class="tf-chat-log"></div>
+        <form id="tw24-chat-form" class="tf-chat-form">
           <input id="tw24-chat-input" type="text" placeholder="Ask about email or endpoint…" autocomplete="off" />
           <button type="submit">Send</button>
         </form>
@@ -173,17 +167,12 @@
     function push(who, text) {
       const row = document.createElement("div");
       row.style.textAlign = who === "user" ? "right" : "left";
-      row.innerHTML = `<span class="tw24-bubble ${
-        who === "bot" ? "tw24-bubble--bot" : "tw24-bubble--user"
-      }">${text}</span>`;
+      row.innerHTML = `<span class="tf-chat-bubble ${who === "bot" ? "tf-chat-bubble--bot" : "tf-chat-bubble--user"}">${text}</span>`;
       log.appendChild(row);
       log.scrollTop = log.scrollHeight;
     }
 
-    push(
-      "bot",
-      "Hi — ask about bundles, pricing, or deploying a capability.",
-    );
+    push("bot", "Hi — ask about bundles, pricing, or deploying a capability.");
 
     function setOpen(v) {
       open = v;

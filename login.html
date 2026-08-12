@@ -5,72 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login — TwunnyFour</title>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: { ink: "#07080c", accent: "#e60000", mute: "#98a0b0" },
-            fontFamily: {
-              display: ['"Clash Display"', "system-ui", "sans-serif"],
-              sans: ['"Satoshi"', "system-ui", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body class="bg-ink text-white font-sans">
-    <header class="site-nav">
-      <div class="nav-inner">
-        <a href="index.html" class="logo"><span class="logo-mark">24</span>Twunny<em>Four</em></a>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="email.html" class="nav-link">Email</a>
-          <a href="endpoint.html" class="nav-link">Endpoint</a>
-          <a href="pricing.html" class="nav-link">Pricing</a>
-        </nav>
-        <a href="cart.html" class="icon-btn relative" aria-label="Cart">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
-          <span data-cart-count class="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-[10px] font-semibold opacity-0">0</span>
+  <body>
+    <header class="tf-nav">
+      <div class="tf-nav__inner">
+        <a href="index.html" class="tf-logo">
+          <span class="tf-logo__mark">24</span>
+          <span class="tf-logo__word">TwunnyFour</span>
         </a>
+        <nav class="tf-nav__links" aria-label="Primary">
+          <a href="index.html" class="tf-nav__link">Home</a>
+          <a href="email.html" class="tf-nav__link">Email</a>
+          <a href="endpoint.html" class="tf-nav__link">Endpoint</a>
+          <a href="pricing.html" class="tf-nav__link">Pricing</a>
+        </nav>
+        <div class="tf-nav__actions">
+          <a href="cart.html" class="tf-icon-btn" aria-label="Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
+            <span data-cart-count class="tf-cart-badge">0</span>
+          </a>
+        </div>
       </div>
     </header>
 
-    <main class="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-5 py-16">
-      <div class="tile !p-7">
-        <h1 class="font-display text-3xl m-0">Account</h1>
-        <p class="mt-2 text-sm text-mute">Sign in to sync your cart and deploy capabilities across devices.</p>
+    <main class="tf-container tf-mx-auto tf-max-w-sm" style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding: 3rem 0;">
+      <div class="tf-card" style="padding: 1.75rem;">
+        <h1 class="tf-title-md">Account</h1>
+        <p class="tf-body-sm tf-mt-2">Sign in to sync your cart and deploy capabilities across devices.</p>
 
-        <div id="signed-out" class="mt-8">
-          <div class="mb-5 flex rounded-lg border border-white/[0.08] p-1 text-sm">
-            <button type="button" data-mode="signin" class="mode-btn flex-1 rounded-md bg-accent py-2 font-semibold">Sign in</button>
-            <button type="button" data-mode="signup" class="mode-btn flex-1 rounded-md py-2 font-semibold text-white/70">Sign up</button>
+        <div id="signed-out" class="tf-mt-4">
+          <div class="tf-mode-toggle">
+            <button type="button" data-mode="signin" class="is-active">Sign in</button>
+            <button type="button" data-mode="signup">Sign up</button>
           </div>
-          <form id="auth-form" class="space-y-4">
-            <div>
-              <label class="field-label" for="email">Email</label>
-              <input id="email" type="email" required class="field-input" />
+          <form id="auth-form" class="tf-flex tf-flex-col tf-gap-2">
+            <div class="tf-field">
+              <label class="tf-field__label" for="email">Email</label>
+              <input id="email" type="email" required class="tf-field__input" />
             </div>
-            <div>
-              <label class="field-label" for="password">Password</label>
-              <input id="password" type="password" required minlength="6" class="field-input" />
+            <div class="tf-field">
+              <label class="tf-field__label" for="password">Password</label>
+              <input id="password" type="password" required minlength="6" class="tf-field__input" />
             </div>
-            <p id="auth-error" class="hidden text-sm text-red-300"></p>
-            <p id="auth-ok" class="hidden text-sm text-emerald-300"></p>
-            <button id="auth-submit" class="btn btn-primary w-full">Sign in</button>
+            <p id="auth-error" class="tf-message tf-message--error tf-hidden"></p>
+            <p id="auth-ok" class="tf-message tf-message--success tf-hidden"></p>
+            <button id="auth-submit" class="tf-btn tf-btn--primary tf-btn--full tf-mt-2">Sign in</button>
           </form>
         </div>
 
-        <div id="signed-in" class="mt-8 hidden">
-          <p class="text-sm text-mute">Signed in as</p>
-          <p data-user-email class="mt-1 font-semibold"></p>
-          <div class="mt-6 flex flex-col gap-3">
-            <a href="cart.html" class="btn btn-primary">Open cart</a>
-            <button id="signout" class="btn btn-secondary">Sign out</button>
+        <div id="signed-in" class="tf-hidden tf-mt-4">
+          <p class="tf-body-sm">Signed in as</p>
+          <p data-user-email class="tf-title-sm tf-mt-1"></p>
+          <div class="tf-flex tf-flex-col tf-gap-2 tf-mt-3">
+            <a href="cart.html" class="tf-btn tf-btn--primary">Open cart</a>
+            <button id="signout" class="tf-btn tf-btn--secondary">Sign out</button>
           </div>
         </div>
       </div>
@@ -94,25 +85,23 @@
       function setMode(m) {
         mode = m;
         submit.textContent = m === "signin" ? "Sign in" : "Create account";
-        document.querySelectorAll(".mode-btn").forEach((b) => {
+        document.querySelectorAll(".tf-mode-toggle button").forEach((b) => {
           const active = b.dataset.mode === m;
-          b.classList.toggle("bg-accent", active);
-          b.classList.toggle("text-white", active);
-          b.classList.toggle("text-white/70", !active);
+          b.classList.toggle("is-active", active);
         });
       }
-      document.querySelectorAll(".mode-btn").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
+      document.querySelectorAll(".tf-mode-toggle button").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
 
       async function refresh() {
         const session = await window.TW24.cart.getSession();
-        out.classList.toggle("hidden", !!session);
-        inn.classList.toggle("hidden", !session);
+        out.classList.toggle("tf-hidden", !!session);
+        inn.classList.toggle("tf-hidden", !session);
       }
 
       document.getElementById("auth-form").onsubmit = async (e) => {
         e.preventDefault();
-        err.classList.add("hidden");
-        ok.classList.add("hidden");
+        err.classList.add("tf-hidden");
+        ok.classList.add("tf-hidden");
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
         submit.disabled = true;
@@ -127,13 +116,13 @@
             if (data.session) location.href = next;
             else {
               ok.textContent = "Account created. Confirm your email if required, then sign in.";
-              ok.classList.remove("hidden");
+              ok.classList.remove("tf-hidden");
               setMode("signin");
             }
           }
         } catch (ex) {
           err.textContent = ex.message || "Authentication failed";
-          err.classList.remove("hidden");
+          err.classList.remove("tf-hidden");
         } finally {
           submit.disabled = false;
         }

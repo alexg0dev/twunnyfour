@@ -5,166 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Security — TwunnyFour</title>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
     <meta name="description" content="Enterprise email security: phishing, BEC, DMARC, awareness, and collaboration protection." />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: { ink: "#07080c", accent: "#e60000", mute: "#98a0b0" },
-            fontFamily: {
-              display: ['"Clash Display"', "system-ui", "sans-serif"],
-              sans: ['"Satoshi"', "system-ui", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body class="bg-ink text-white font-sans">
-    <header class="site-nav">
-      <div class="nav-inner">
-        <a href="index.html" class="logo"><span class="logo-mark">24</span>Twunny<em>Four</em></a>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="email.html" class="nav-link is-active">Email</a>
-          <a href="endpoint.html" class="nav-link">Endpoint</a>
-          <a href="pricing.html" class="nav-link">Pricing</a>
+  <body>
+    <header class="tf-nav">
+      <div class="tf-nav__inner">
+        <a href="index.html" class="tf-logo">
+          <span class="tf-logo__mark">24</span>
+          <span class="tf-logo__word">TwunnyFour</span>
+        </a>
+        <nav class="tf-nav__links" aria-label="Primary">
+          <a href="index.html" class="tf-nav__link">Home</a>
+          <a href="email.html" class="tf-nav__link is-active">Email</a>
+          <a href="endpoint.html" class="tf-nav__link">Endpoint</a>
+          <a href="pricing.html" class="tf-nav__link">Pricing</a>
         </nav>
-        <div class="nav-actions">
-          <a href="login.html" data-auth-link class="icon-btn" aria-label="Login">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+        <div class="tf-nav__actions">
+          <a href="login.html" data-auth-link class="tf-icon-btn" aria-label="Login">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
           </a>
-          <a href="cart.html" class="icon-btn relative" aria-label="Cart">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
-            <span data-cart-count class="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-[10px] font-semibold opacity-0">0</span>
+          <a href="cart.html" class="tf-icon-btn" aria-label="Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
+            <span data-cart-count class="tf-cart-badge">0</span>
           </a>
-          <button id="mobile-nav" class="icon-btn md:hidden" aria-label="Menu">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <button id="mobile-nav" class="tf-icon-btn tf-menu-btn" aria-label="Menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
     </header>
-    <div id="mobile-panel" class="mobile-panel">
+    <div id="mobile-panel" class="tf-mobile-panel">
       <a href="index.html">Home</a>
-      <a href="email.html">Email</a>
+      <a href="email.html" class="is-active">Email</a>
       <a href="endpoint.html">Endpoint</a>
       <a href="pricing.html">Pricing</a>
     </div>
 
-    <div class="chapter-bar" data-chapter-bar aria-hidden="true"><span></span></div>
-
     <main>
-      <section class="hero-product">
-        <div class="hero-product__bg" aria-hidden="true"></div>
-        <div class="hero-product__inner">
-          <p class="eyebrow eyebrow-red">Email security</p>
-          <h1>Protect the channel where trust is decided</h1>
-          <p class="lead">
-            Block phishing, spoofing, malware, and business email compromise with enterprise-grade AI protection
-            designed for Microsoft 365 and Google Workspace.
+      <section class="tf-product-hero">
+        <div class="tf-product-hero__inner">
+          <p class="tf-caption tf-caption--red">Email security</p>
+          <h1 class="tf-title-lg tf-mt-2">Protect the channel where trust is decided</h1>
+          <p class="tf-body tf-mt-3">
+            Block phishing, spoofing, malware, and business email compromise with enterprise-grade AI protection designed for Microsoft 365 and Google Workspace.
           </p>
-          <div class="hero-product__cta">
-            <span class="mag"><a href="#plans" class="btn btn-primary">View email plans</a></span>
-            <span class="mag"><a href="#how" class="btn btn-secondary">How it works</a></span>
+          <div class="tf-product-hero__cta">
+            <a href="#plans" class="tf-btn tf-btn--primary">View email plans</a>
+            <a href="#how" class="tf-btn tf-btn--secondary">How it works</a>
           </div>
         </div>
       </section>
 
-      <section class="section" data-chapter>
-        <div class="container">
-          <div class="split-copy reveal">
+      <section class="tf-section">
+        <div class="tf-container">
+          <div class="tf-split tf-reveal">
             <div>
-              <p class="eyebrow">The problem</p>
-              <h2>Email is still where trust gets exploited</h2>
+              <p class="tf-caption">The problem</p>
+              <h2 class="tf-title-lg tf-mt-2">Email is still where trust gets exploited</h2>
             </div>
-            <div class="body prose-muted">
+            <div class="tf-body">
               <p>
-                A single convincing message can move money, reset MFA, or install malware. Traditional spam filters
-                catch volume; they struggle with targeted social engineering, lookalike domains, and links that
-                only turn dangerous after delivery.
+                A single convincing message can move money, reset MFA, or install malware. Traditional spam filters catch volume; they struggle with targeted social engineering, lookalike domains, and links that only turn dangerous after delivery.
               </p>
-              <p>
-                TwunnyFour email security treats every message as untrusted until content, sender reputation,
-                authentication, and user context say otherwise.
+              <p class="tf-mt-3">
+                TwunnyFour email security treats every message as untrusted until content, sender reputation, authentication, and user context say otherwise.
               </p>
             </div>
           </div>
-          <div class="rule-grid reveal reveal-stagger mt-16">
-            <article class="rule-cell">
-              <h3>Phishing &amp; quishing</h3>
-              <p>AI link inspection and payload analysis catch weaponized URLs—including QR campaigns—before users click.</p>
+
+          <div class="tf-grid-3 tf-reveal tf-reveal-stagger tf-mt-5">
+            <article class="tf-card">
+              <h3 class="tf-title-sm">Phishing &amp; quishing</h3>
+              <p class="tf-card__body tf-mt-2">AI link inspection and payload analysis catch weaponized URLs—including QR campaigns—before users click.</p>
             </article>
-            <article class="rule-cell">
-              <h3>BEC &amp; spoofing</h3>
-              <p>Contextual banners, brand impersonation checks, and DMARC policy management reduce wire-fraud and domain abuse.</p>
+            <article class="tf-card">
+              <h3 class="tf-title-sm">BEC &amp; spoofing</h3>
+              <p class="tf-card__body tf-mt-2">Contextual banners, brand impersonation checks, and DMARC policy management reduce wire-fraud and domain abuse.</p>
             </article>
-            <article class="rule-cell">
-              <h3>People risk</h3>
-              <p>Simulations and coaching turn the workforce into an early warning layer instead of a permanent weak point.</p>
+            <article class="tf-card">
+              <h3 class="tf-title-sm">People risk</h3>
+              <p class="tf-card__body tf-mt-2">Simulations and coaching turn the workforce into an early warning layer instead of a permanent weak point.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="how" class="section section-deep" data-chapter>
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Solution</p>
-            <h2>Layered controls around the mailbox</h2>
-            <p class="prose-muted">
-              Start with a cloud gateway, deepen with anti-BEC, authenticate domains, train users,
-              then extend the same philosophy into chat and file collaboration.
-            </p>
+      <section id="how" class="tf-section tf-section--deep">
+        <div class="tf-container">
+          <div class="tf-section-head tf-reveal">
+            <p class="tf-caption">Solution</p>
+            <h2 class="tf-title-lg tf-mt-2">Layered controls around the mailbox</h2>
+            <p class="tf-body tf-mt-3">Start with a cloud gateway, deepen with anti-BEC, authenticate domains, train users, then extend the same philosophy into chat and file collaboration.</p>
           </div>
-          <div class="rule-grid rule-grid--2 reveal reveal-stagger">
-            <article class="rule-cell">
-              <p class="rule-num">01</p>
-              <h3>Inspect before trust</h3>
-              <p>Messages are analyzed for malicious URLs, attachments, impersonation patterns, and anomalous sender behavior at the gateway.</p>
+          <div class="tf-grid-2 tf-reveal tf-reveal-stagger">
+            <article class="tf-card">
+              <p class="tf-caption tf-caption--red">01</p>
+              <h3 class="tf-title-sm tf-mt-2">Inspect before trust</h3>
+              <p class="tf-card__body tf-mt-2">Messages are analyzed for malicious URLs, attachments, impersonation patterns, and anomalous sender behavior at the gateway.</p>
             </article>
-            <article class="rule-cell">
-              <p class="rule-num">02</p>
-              <h3>Authenticate the brand</h3>
-              <p>DMARC Analyzer moves you from monitoring spoofing to enforcing policy—improving security and legitimate deliverability.</p>
+            <article class="tf-card">
+              <p class="tf-caption tf-caption--red">02</p>
+              <h3 class="tf-title-sm tf-mt-2">Authenticate the brand</h3>
+              <p class="tf-card__body tf-mt-2">DMARC Analyzer moves you from monitoring spoofing to enforcing policy—improving security and legitimate deliverability.</p>
             </article>
-            <article class="rule-cell">
-              <p class="rule-num">03</p>
-              <h3>Coach continuous behavior</h3>
-              <p>Engage Awareness scores risk from simulations and delivers targeted education instead of annual one-size training.</p>
+            <article class="tf-card">
+              <p class="tf-caption tf-caption--red">03</p>
+              <h3 class="tf-title-sm tf-mt-2">Coach continuous behavior</h3>
+              <p class="tf-card__body tf-mt-2">Engage Awareness scores risk from simulations and delivers targeted education instead of annual one-size training.</p>
             </article>
-            <article class="rule-cell">
-              <p class="rule-num">04</p>
-              <h3>Protect side channels</h3>
-              <p>Collaboration Security covers Teams, Slack, and SharePoint so attackers cannot simply move the conversation off email.</p>
+            <article class="tf-card">
+              <p class="tf-caption tf-caption--red">04</p>
+              <h3 class="tf-title-sm tf-mt-2">Protect side channels</h3>
+              <p class="tf-card__body tf-mt-2">Collaboration Security covers Teams, Slack, and SharePoint so attackers cannot simply move the conversation off email.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="plans" class="section" data-chapter>
-        <div class="container">
-          <div class="section-head reveal mx-auto text-center !max-w-2xl">
-            <p class="eyebrow eyebrow-red">Plans</p>
-            <h2>Coverage your org can actually deploy</h2>
-            <p class="prose-muted mx-auto">Each plan is priced per month. Sign in to add items to your cart.</p>
+      <section id="plans" class="tf-section">
+        <div class="tf-container">
+          <div class="tf-section-head tf-section-head--center tf-reveal">
+            <p class="tf-caption tf-caption--red">Plans</p>
+            <h2 class="tf-title-lg tf-mt-2">Coverage your org can actually deploy</h2>
+            <p class="tf-body tf-mt-3 tf-mx-auto">Each plan is priced per month. Sign in to add items to your cart.</p>
           </div>
-          <div id="email-grid" class="reveal grid gap-5 md:grid-cols-2 xl:grid-cols-3"></div>
+          <div id="email-grid" class="tf-grid-3 tf-reveal tf-reveal-stagger tf-mt-5"></div>
         </div>
       </section>
 
-      <section class="section section-deep" data-chapter>
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">FAQ</p>
-            <h2>Common questions</h2>
+      <section class="tf-section tf-section--deep">
+        <div class="tf-container">
+          <div class="tf-section-head tf-reveal">
+            <p class="tf-caption">FAQ</p>
+            <h2 class="tf-title-lg tf-mt-2">Common questions</h2>
           </div>
-          <div class="reveal faq max-w-3xl">
+          <div class="tf-reveal tf-faq tf-max-w-lg">
             <details>
-              <summary>Does this replace Microsoft or Google’s built-in security?</summary>
+              <summary>Does this replace Microsoft or Google's built-in security?</summary>
               <p>It complements them. Native controls are a baseline; TwunnyFour adds dedicated AI inspection, anti-BEC context, DMARC operations, and collaboration coverage.</p>
             </details>
             <details>
@@ -180,8 +160,8 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-simple">© <span id="year"></span> TwunnyFour · <a class="hover:text-white" href="endpoint.html">Endpoint security</a></div>
+    <footer class="tf-footer">
+      <div class="tf-footer__simple">© <span id="year"></span> TwunnyFour · <a href="endpoint.html">Endpoint security</a></div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -196,15 +176,15 @@
       document.getElementById("email-grid").innerHTML = window.TW24_PRODUCTS.email
         .map(
           (p) => `
-        <article class="tile">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-display text-2xl leading-tight">${p.name}</h3>
-            <p class="shrink-0 font-display text-3xl">$${p.price}<span class="text-sm text-mute">/mo</span></p>
+        <article class="tf-card">
+          <div class="tf-flex tf-flex-col tf-gap-2 tf-justify-between tf-items-start" style="min-height: 4rem;">
+            <h3 class="tf-title-sm">${p.name}</h3>
+            <p class="tf-card__price">$${p.price}<span>/mo</span></p>
           </div>
-          <p class="mt-3 flex-1 text-sm leading-relaxed text-mute">${p.blurb}</p>
-          <p class="mt-6 text-xs font-medium tracking-wide uppercase text-white/35">Key features</p>
-          <ul class="feature-list mt-2">${p.features.map((f) => `<li>${f}</li>`).join("")}</ul>
-          <span class="mag mt-6 w-full block"><button data-add-cart="${p.id}" class="btn btn-primary w-full">Add to cart</button></span>
+          <p class="tf-card__body tf-mt-3">${p.blurb}</p>
+          <p class="tf-caption tf-mt-4">Key features</p>
+          <ul class="tf-feature-list tf-mt-2">${p.features.map((f) => `<li>${f}</li>`).join("")}</ul>
+          <button data-add-cart="${p.id}" class="tf-btn tf-btn--primary tf-btn--full tf-mt-4">Add to cart</button>
         </article>`,
         )
         .join("");
