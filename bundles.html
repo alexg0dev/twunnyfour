@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bundles — TwunnyFour</title>
-            <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -38,16 +39,24 @@
       <a href="pricing.html">Pricing</a>
     </div>
 
-    <main class="tf-section">
-      <div class="tf-container">
-        <div class="tf-max-w-md tf-reveal">
-          <p class="tf-caption">Marketplace</p>
-          <h1 class="tf-title-xl tf-mt-2">Security bundles</h1>
-          <p class="tf-body tf-mt-3">
-            TwunnyFour organizes products into two full lines. Open a product page for deep explanations, deployment guidance, plans, and FAQs.
+    <main>
+      <section class="tf-page-hero">
+        <div class="tf-page-hero__bg" aria-hidden="true">
+          <img class="tf-hero__matrix" src="assets/hero-bg.png" alt="" />
+          <div class="tf-hero__orb tf-hero__orb--a"></div>
+        </div>
+        <div class="tf-page-hero__inner">
+          <p class="tf-caption tf-caption--red tf-reveal">Marketplace</p>
+          <h1 class="tf-title-xl tf-mt-2 tf-reveal">Security bundles</h1>
+          <p class="tf-body tf-mt-3 tf-reveal">
+            TwunnyFour organizes products into two full lines—email and endpoint. Open a product page for deep explanations, deployment guidance, plans, and FAQs.
           </p>
         </div>
-        <div class="tf-grid-2 tf-reveal tf-reveal-stagger tf-mt-5">
+      </section>
+
+      <section class="tf-section tf-section--tight">
+      <div class="tf-container">
+        <div class="tf-grid-2 tf-reveal tf-reveal-stagger">
           <a href="email.html" class="tf-card tf-card--link">
             <h2 class="tf-title-md">Email security</h2>
             <p class="tf-card__body tf-mt-3">
@@ -64,6 +73,7 @@
           </a>
         </div>
       </div>
+      </section>
     </main>
 
     <footer class="tf-footer">

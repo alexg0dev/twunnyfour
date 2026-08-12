@@ -122,7 +122,7 @@
         return;
       }
       const start = performance.now();
-      const dur = 1800;
+      const dur = 1600;
       const tick = (now) => {
         const t = Math.min(1, (now - start) / dur);
         const eased = 1 - Math.pow(1 - t, 3);
@@ -142,26 +142,6 @@
       { threshold: 0.4 },
     );
     nodes.forEach((n) => io.observe(n));
-  }
-
-  function initScanForm() {
-    const form = document.getElementById("domain-scan");
-    if (!form) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const input = form.querySelector("input");
-      const value = (input?.value || "").trim();
-      if (!value) return;
-      try {
-        sessionStorage.setItem("tf_scan_target", value);
-      } catch (_) {}
-      if (window.TW24?.toast) {
-        window.TW24.toast(`Scan queued for ${value}. Choose a plan to protect it.`);
-      }
-      setTimeout(() => {
-        location.href = `pricing.html?domain=${encodeURIComponent(value)}`;
-      }, 450);
-    });
   }
 
   function initMagnetic() {
@@ -188,7 +168,7 @@
   function initRipple() {
     if (reduce) return;
     const targets = document.querySelectorAll(
-      ".tf-btn, .tf-nav__cta, .tf-nav__signin, .tf-nav__link, .tf-card--link, .tf-chat-toggle, .tf-login__submit, .tf-scan__btn",
+      ".tf-btn, .tf-nav__cta, .tf-nav__signin, .tf-nav__link, .tf-card--link, .tf-chat-toggle, .tf-login__submit, .tf-hero__pill",
     );
     targets.forEach((el) => {
       el.addEventListener("pointerdown", (e) => {
@@ -287,6 +267,5 @@
     initLinkHover();
     initCursorGlow();
     initCountUp();
-    initScanForm();
   });
 })();

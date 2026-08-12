@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart — TwunnyFour</title>
-            <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -38,17 +39,28 @@
       <a href="pricing.html">Pricing</a>
     </div>
 
-    <main class="tf-container tf-mx-auto tf-max-w-md" style="padding: clamp(3rem, 8vw, 5rem) 0;">
-      <h1 class="tf-title-lg">Your cart</h1>
-      <p class="tf-body-sm tf-mt-2">Deployments sync to your TwunnyFour account after login.</p>
+    <main>
+      <section class="tf-page-hero">
+        <div class="tf-page-hero__bg" aria-hidden="true">
+          <img class="tf-hero__matrix" src="assets/hero-bg.png" alt="" />
+          <div class="tf-hero__orb tf-hero__orb--a"></div>
+        </div>
+        <div class="tf-page-hero__inner">
+          <p class="tf-caption tf-caption--red">Cart</p>
+          <h1 class="tf-title-lg tf-mt-2">Your cart</h1>
+          <p class="tf-body tf-mt-3">Deployments sync to your TwunnyFour account after login.</p>
+        </div>
+      </section>
 
-      <div id="gate" class="tf-hidden tf-card tf-text-center" style="margin-top: 2rem; padding: 2rem;">
+      <section class="tf-section tf-section--tight">
+      <div class="tf-container tf-mx-auto tf-max-w-md">
+      <div id="gate" class="tf-hidden tf-card tf-text-center" style="padding: 2rem;">
         <p class="tf-title-md">Login required</p>
         <p class="tf-body-sm tf-mt-2">Sign in to view and manage your cart.</p>
         <a id="login-next" href="login.html" class="tf-btn tf-btn--primary tf-mt-3">Sign in</a>
       </div>
 
-      <div id="cart-wrap" class="tf-hidden tf-mt-5">
+      <div id="cart-wrap" class="tf-hidden">
         <div id="cart-list" class="tf-flex tf-flex-col tf-gap-2"></div>
         <div class="tf-cart-total tf-mt-4">
           <div>
@@ -61,6 +73,8 @@
           </div>
         </div>
       </div>
+      </div>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

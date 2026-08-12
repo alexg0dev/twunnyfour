@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pricing — TwunnyFour</title>
-            <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -38,17 +39,24 @@
       <a href="pricing.html" class="is-active">Pricing</a>
     </div>
 
-    <main class="tf-section">
-      <div class="tf-container">
-        <div class="tf-text-center tf-mx-auto tf-max-w-md">
+    <main>
+      <section class="tf-page-hero">
+        <div class="tf-page-hero__bg" aria-hidden="true">
+          <img class="tf-hero__matrix" src="assets/hero-bg.png" alt="" />
+          <div class="tf-hero__orb tf-hero__orb--a"></div>
+        </div>
+        <div class="tf-page-hero__inner tf-page-hero__inner--wide">
           <p class="tf-caption tf-caption--red tf-reveal">Pricing</p>
           <h1 class="tf-title-xl tf-mt-2 tf-reveal">Simple, transparent pricing</h1>
-          <p class="tf-body tf-mt-3 tf-mx-auto tf-reveal">
+          <p class="tf-body tf-mt-3 tf-reveal">
             Scalable packages for every size. Start with a plan, then add email modules, endpoint modules, or individual capabilities as your program matures.
           </p>
         </div>
+      </section>
 
-        <div id="plans" class="tf-grid-3 tf-reveal tf-reveal-stagger tf-mt-5"></div>
+      <section class="tf-section tf-section--tight">
+      <div class="tf-container">
+        <div id="plans" class="tf-grid-3 tf-reveal tf-reveal-stagger"></div>
 
         <section class="tf-reveal tf-mt-6">
           <div class="tf-grid-2 tf-gap-3">
@@ -84,6 +92,7 @@
           <a href="index.html#capabilities" class="tf-btn tf-btn--primary">Build your stack</a>
         </div>
       </div>
+      </section>
     </main>
 
     <footer class="tf-footer">
