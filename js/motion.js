@@ -1,5 +1,5 @@
 /**
- * TwunnyFour motion — smoother, richer, still restrained
+ * TwunnyFour motion — enter, scroll, hover, click
  */
 (function () {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -24,7 +24,7 @@
     let current = 0;
     let target = 0;
     const tick = () => {
-      current += (target - current) * 0.12;
+      current += (target - current) * 0.14;
       bar.style.width = `${current}%`;
       requestAnimationFrame(tick);
     };
@@ -49,19 +49,20 @@
 
   function initReveals() {
     if (reduce) {
-      document.querySelectorAll(".tf-reveal").forEach((el) => el.classList.add("is-in"));
+      document.querySelectorAll(".tf-reveal, .tf-reveal-child").forEach((el) => {
+        el.classList.add("is-in");
+      });
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-in");
-            io.unobserve(e.target);
-          }
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     document.querySelectorAll(".tf-reveal").forEach((el) => io.observe(el));
   }
@@ -69,14 +70,46 @@
   function initNavScroll() {
     const nav = document.querySelector(".tf-nav");
     if (!nav) return;
-    const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 16);
+    const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 12);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+  }
+
+  function initHeroParallax() {
+    if (reduce) return;
+    const hero = document.querySelector(".tf-hero");
+    const bg = document.querySelector(".tf-hero__bg");
+    const main = document.querySelector(".tf-hero__main");
+    if (!hero || !bg) return;
+
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      const h = hero.offsetHeight || 1;
+      const p = Math.min(1, Math.max(0, y / h));
+      bg.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1 + p * 0.04})`;
+      if (main) {
+        main.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
+        main.style.opacity = String(1 - p * 0.85);
+      }
+      ticking = false;
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true },
+    );
   }
 
   function initMagnetic() {
     if (reduce || coarse) return;
     document.querySelectorAll(".tf-btn--primary, .tf-nav__cta").forEach((btn) => {
+      if (btn.closest(".tf-mag")) return;
       const wrap = document.createElement("span");
       wrap.className = "tf-mag";
       btn.parentNode.insertBefore(wrap, btn);
@@ -86,7 +119,7 @@
         const r = wrap.getBoundingClientRect();
         const x = e.clientX - r.left - r.width / 2;
         const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
+        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.26}px)`;
       });
       wrap.addEventListener("mouseleave", () => {
         btn.style.transform = "";
@@ -94,34 +127,49 @@
     });
   }
 
-  function initAsideParallax() {
-    if (reduce || coarse) return;
-    const aside = document.querySelector(".tf-hero__aside");
-    const glow = document.querySelector(".tf-hero__aside-glow");
-    const mark = document.querySelector(".tf-hero__aside-mark");
-    if (!aside) return;
-
-    aside.addEventListener("mousemove", (e) => {
-      const r = aside.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      if (glow) glow.style.transform = `translate(${x * 18}px, ${y * 14}px) scale(1.05)`;
-      if (mark) mark.style.transform = `translate(${x * -10}px, ${y * -8}px)`;
+  function initRipple() {
+    if (reduce) return;
+    const targets = document.querySelectorAll(
+      ".tf-btn, .tf-nav__cta, .tf-nav__link, .tf-card--link, .tf-chat-toggle, a.tf-price-card__cta",
+    );
+    targets.forEach((el) => {
+      el.addEventListener("pointerdown", (e) => {
+        if (e.button !== 0) return;
+        const r = el.getBoundingClientRect();
+        const ripple = document.createElement("span");
+        ripple.className = "tf-ripple";
+        const size = Math.max(r.width, r.height) * 1.35;
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${e.clientX - r.left - size / 2}px`;
+        ripple.style.top = `${e.clientY - r.top - size / 2}px`;
+        el.appendChild(ripple);
+        ripple.addEventListener("animationend", () => ripple.remove());
+      });
     });
-    aside.addEventListener("mouseleave", () => {
-      if (glow) glow.style.transform = "";
-      if (mark) mark.style.transform = "";
+  }
+
+  function initPress() {
+    if (reduce) return;
+    document.querySelectorAll(".tf-btn, .tf-nav__cta, .tf-card--link, .tf-chat-toggle").forEach((el) => {
+      el.addEventListener("pointerdown", () => el.classList.add("is-press"));
+      const clear = () => el.classList.remove("is-press");
+      el.addEventListener("pointerup", clear);
+      el.addEventListener("pointerleave", clear);
+      el.addEventListener("pointercancel", clear);
     });
   }
 
   function initCardTilt() {
     if (reduce || coarse) return;
-    document.querySelectorAll(".tf-card--link, .tf-card--featured").forEach((card) => {
+    document.querySelectorAll(".tf-card, .tf-price-card, .tf-cap").forEach((card) => {
+      card.classList.add("tf-tilt");
       card.addEventListener("mousemove", (e) => {
         const r = card.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `translateY(-4px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 3).toFixed(2)}deg)`;
+        card.style.transform = `translateY(-6px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
+        card.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
+        card.style.setProperty("--my", `${(y + 0.5) * 100}%`);
       });
       card.addEventListener("mouseleave", () => {
         card.style.transform = "";
@@ -129,13 +177,56 @@
     });
   }
 
+  function initLinkHover() {
+    if (reduce || coarse) return;
+    document.querySelectorAll(".tf-nav__link, .tf-footer__col a, .tf-hero__products a").forEach((a) => {
+      a.classList.add("tf-hover-line");
+    });
+  }
+
+  function initCursorGlow() {
+    if (reduce || coarse) return;
+    const glow = document.createElement("div");
+    glow.className = "tf-cursor-glow";
+    document.body.appendChild(glow);
+    let x = 0;
+    let y = 0;
+    let cx = 0;
+    let cy = 0;
+    window.addEventListener(
+      "pointermove",
+      (e) => {
+        x = e.clientX;
+        y = e.clientY;
+        glow.classList.add("is-on");
+      },
+      { passive: true },
+    );
+    window.addEventListener(
+      "pointerleave",
+      () => glow.classList.remove("is-on"),
+      { passive: true },
+    );
+    const tick = () => {
+      cx += (x - cx) * 0.12;
+      cy += (y - cy) * 0.12;
+      glow.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("is-ready");
     initProgress();
     initReveals();
     initNavScroll();
+    initHeroParallax();
     initMagnetic();
-    initAsideParallax();
+    initRipple();
+    initPress();
     initCardTilt();
+    initLinkHover();
+    initCursorGlow();
   });
 })();
