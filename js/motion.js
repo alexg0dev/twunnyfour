@@ -80,6 +80,7 @@
     const hero = document.querySelector(".tf-hero");
     const bg = document.querySelector(".tf-hero__bg");
     const main = document.querySelector(".tf-hero__main");
+    const visual = document.querySelector(".tf-hero__visual");
     if (!hero || !bg) return;
 
     let ticking = false;
@@ -87,10 +88,14 @@
       const y = window.scrollY;
       const h = hero.offsetHeight || 1;
       const p = Math.min(1, Math.max(0, y / h));
-      bg.style.transform = `translate3d(0, ${y * 0.28}px, 0) scale(${1 + p * 0.04})`;
+      bg.style.transform = `translate3d(0, ${y * 0.22}px, 0)`;
       if (main) {
-        main.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
-        main.style.opacity = String(1 - p * 0.85);
+        main.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
+        main.style.opacity = String(1 - p * 0.7);
+      }
+      if (visual) {
+        visual.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
+        visual.style.opacity = String(1 - p * 0.85);
       }
       ticking = false;
     };
@@ -106,9 +111,62 @@
     );
   }
 
+  function initCountUp() {
+    const nodes = document.querySelectorAll("[data-count-up]");
+    if (!nodes.length) return;
+    const format = (n) => n.toLocaleString("en-US");
+    const run = (el) => {
+      const to = Number(el.getAttribute("data-to") || "0");
+      if (reduce) {
+        el.textContent = format(to);
+        return;
+      }
+      const start = performance.now();
+      const dur = 1800;
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = format(Math.round(to * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          run(e.target);
+          io.unobserve(e.target);
+        });
+      },
+      { threshold: 0.4 },
+    );
+    nodes.forEach((n) => io.observe(n));
+  }
+
+  function initScanForm() {
+    const form = document.getElementById("domain-scan");
+    if (!form) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = form.querySelector("input");
+      const value = (input?.value || "").trim();
+      if (!value) return;
+      try {
+        sessionStorage.setItem("tf_scan_target", value);
+      } catch (_) {}
+      if (window.TW24?.toast) {
+        window.TW24.toast(`Scan queued for ${value}. Choose a plan to protect it.`);
+      }
+      setTimeout(() => {
+        location.href = `pricing.html?domain=${encodeURIComponent(value)}`;
+      }, 450);
+    });
+  }
+
   function initMagnetic() {
     if (reduce || coarse) return;
-    document.querySelectorAll(".tf-btn--primary, .tf-nav__cta").forEach((btn) => {
+    document.querySelectorAll(".tf-btn--primary, .tf-nav__cta, .tf-login__submit").forEach((btn) => {
       if (btn.closest(".tf-mag")) return;
       const wrap = document.createElement("span");
       wrap.className = "tf-mag";
@@ -130,7 +188,7 @@
   function initRipple() {
     if (reduce) return;
     const targets = document.querySelectorAll(
-      ".tf-btn, .tf-nav__cta, .tf-nav__link, .tf-card--link, .tf-chat-toggle, a.tf-price-card__cta",
+      ".tf-btn, .tf-nav__cta, .tf-nav__signin, .tf-nav__link, .tf-card--link, .tf-chat-toggle, .tf-login__submit, .tf-scan__btn",
     );
     targets.forEach((el) => {
       el.addEventListener("pointerdown", (e) => {
@@ -150,7 +208,7 @@
 
   function initPress() {
     if (reduce) return;
-    document.querySelectorAll(".tf-btn, .tf-nav__cta, .tf-card--link, .tf-chat-toggle").forEach((el) => {
+    document.querySelectorAll(".tf-btn, .tf-nav__cta, .tf-nav__signin, .tf-card--link, .tf-chat-toggle, .tf-login__submit").forEach((el) => {
       el.addEventListener("pointerdown", () => el.classList.add("is-press"));
       const clear = () => el.classList.remove("is-press");
       el.addEventListener("pointerup", clear);
@@ -179,7 +237,7 @@
 
   function initLinkHover() {
     if (reduce || coarse) return;
-    document.querySelectorAll(".tf-nav__link, .tf-footer__col a, .tf-hero__products a").forEach((a) => {
+    document.querySelectorAll(".tf-nav__link, .tf-footer__col a").forEach((a) => {
       a.classList.add("tf-hover-line");
     });
   }
@@ -228,5 +286,7 @@
     initCardTilt();
     initLinkHover();
     initCursorGlow();
+    initCountUp();
+    initScanForm();
   });
 })();

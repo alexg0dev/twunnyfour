@@ -9,8 +9,8 @@
     <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
-    <header class="tf-nav">
+  <body class="tf-auth-page">
+    <header class="tf-nav tf-nav--auth">
       <div class="tf-nav__inner">
         <a href="index.html" class="tf-logo">Twunny<span>Four</span></a>
         <nav class="tf-nav__links" aria-label="Primary">
@@ -20,7 +20,7 @@
           <a href="pricing.html" class="tf-nav__link">Pricing</a>
         </nav>
         <div class="tf-nav__actions">
-          <a href="pricing.html" class="tf-nav__cta">Get started</a>
+          <a href="login.html" class="tf-nav__signin is-active">Sign in</a>
           <a href="cart.html" class="tf-nav__cart" aria-label="Cart">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
             <span data-cart-count class="tf-cart-badge">0</span>
@@ -39,90 +39,79 @@
       <a href="login.html" class="is-active">Sign in</a>
     </div>
 
-    <main class="tf-auth" aria-label="Sign in">
-      <div class="tf-auth__bg" aria-hidden="true">
-        <div class="tf-auth__orb tf-auth__orb--a"></div>
-        <div class="tf-auth__orb tf-auth__orb--b"></div>
-        <div class="tf-auth__grid"></div>
-      </div>
+    <main class="tf-login" aria-label="Sign in">
+      <section class="tf-login__form-pane" id="signed-out">
+        <div class="tf-login__form-inner">
+          <div class="tf-login__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 16V8h8M48 8h8v8M56 48v8h-8M16 56H8v-8" />
+              <circle cx="32" cy="26" r="10" />
+              <path d="M16 52c4-10 12-14 16-14s12 4 16 14" />
+            </svg>
+          </div>
+          <h1 id="auth-heading" class="tf-login__title">Sign In</h1>
 
-      <div class="tf-auth__shell">
-        <div class="tf-auth__intro">
-          <p class="tf-caption tf-caption--red tf-auth__rise" style="--d: 0.1s">Account access</p>
-          <h1 class="tf-auth__brand tf-auth__rise" style="--d: 0.22s">Twunny<span>Four</span></h1>
-          <p class="tf-auth__lead tf-auth__rise" style="--d: 0.34s">
-            Sync your cart, unlock deployments, and manage email &amp; endpoint security from one account.
+          <form id="auth-form" class="tf-login__form" novalidate>
+            <div class="tf-login__field">
+              <span class="tf-login__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c2-5 6-7 8-7s6 2 8 7"/></svg>
+              </span>
+              <label class="tf-sr-only" for="email">Email</label>
+              <input id="email" type="email" required autocomplete="email" class="tf-login__input" placeholder="Email" />
+            </div>
+            <div class="tf-login__field">
+              <span class="tf-login__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+              </span>
+              <label class="tf-sr-only" for="password">Password</label>
+              <input id="password" type="password" required minlength="6" autocomplete="current-password" class="tf-login__input" placeholder="Password" />
+            </div>
+
+            <p id="auth-error" class="tf-message tf-message--error tf-hidden" role="alert"></p>
+            <p id="auth-ok" class="tf-message tf-message--success tf-hidden" role="status"></p>
+
+            <button id="auth-submit" type="submit" class="tf-login__submit">
+              <span class="tf-btn__label">Sign In</span>
+              <span class="tf-btn__spin" aria-hidden="true"></span>
+            </button>
+
+            <div class="tf-login__meta">
+              <label class="tf-login__remember">
+                <input type="checkbox" id="remember" />
+                <span>Remember me</span>
+              </label>
+              <button type="button" id="forgot" class="tf-login__forgot">Forgot password</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="tf-login__welcome" aria-hidden="false">
+        <div class="tf-login__welcome-bg" aria-hidden="true"></div>
+        <div class="tf-login__welcome-copy">
+          <h2 id="welcome-title" class="tf-login__welcome-title">Welcome</h2>
+          <p id="welcome-body" class="tf-login__welcome-body">
+            Sync your cart and deploy email &amp; endpoint protection across your organization.
+          </p>
+          <p class="tf-login__switch">
+            <span id="switch-text">don't have an account?</span>
+            <button type="button" id="mode-switch">Sign up</button>
           </p>
         </div>
+      </section>
 
-        <div class="tf-auth__panel tf-auth__rise" style="--d: 0.46s">
-          <div id="signed-out">
-            <div class="tf-mode-toggle" role="tablist" aria-label="Auth mode">
-              <button type="button" data-mode="signin" class="is-active" role="tab" aria-selected="true">Sign in</button>
-              <button type="button" data-mode="signup" role="tab" aria-selected="false">Sign up</button>
-            </div>
-
-            <h2 id="auth-heading" class="tf-auth__heading">Welcome back</h2>
-            <p id="auth-sub" class="tf-auth__sub">Enter your credentials to continue.</p>
-
-            <form id="auth-form" class="tf-auth__form" novalidate>
-              <div class="tf-field">
-                <label class="tf-field__label" for="email">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  required
-                  class="tf-field__input"
-                  placeholder="you@company.com"
-                />
-              </div>
-              <div class="tf-field">
-                <div class="tf-field__row">
-                  <label class="tf-field__label" for="password">Password</label>
-                  <button type="button" id="toggle-pass" class="tf-field__hint" aria-pressed="false">Show</button>
-                </div>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autocomplete="current-password"
-                  required
-                  minlength="6"
-                  class="tf-field__input"
-                  placeholder="At least 6 characters"
-                />
-              </div>
-
-              <p id="auth-error" class="tf-message tf-message--error tf-hidden" role="alert"></p>
-              <p id="auth-ok" class="tf-message tf-message--success tf-hidden" role="status"></p>
-
-              <button id="auth-submit" type="submit" class="tf-btn tf-btn--primary tf-btn--full">
-                <span class="tf-btn__label">Sign in</span>
-                <span class="tf-btn__spin" aria-hidden="true"></span>
-              </button>
-            </form>
-          </div>
-
-          <div id="signed-in" class="tf-hidden">
-            <p class="tf-caption tf-caption--red">Signed in</p>
-            <h2 class="tf-auth__heading tf-mt-2">You're in</h2>
-            <p class="tf-auth__sub">Signed in as</p>
-            <p data-user-email class="tf-auth__email"></p>
-            <div class="tf-auth__actions">
-              <a href="cart.html" class="tf-btn tf-btn--primary tf-btn--full">Open cart</a>
-              <button id="signout" type="button" class="tf-btn tf-btn--secondary tf-btn--full">Sign out</button>
-            </div>
+      <section id="signed-in" class="tf-login__signed tf-hidden">
+        <div class="tf-login__signed-inner">
+          <p class="tf-caption tf-caption--red">Signed in</p>
+          <h2 class="tf-login__title">You're in</h2>
+          <p class="tf-login__welcome-body">Signed in as</p>
+          <p data-user-email class="tf-auth__email"></p>
+          <div class="tf-auth__actions">
+            <a href="cart.html" class="tf-btn tf-btn--primary tf-btn--full">Open cart</a>
+            <button id="signout" type="button" class="tf-btn tf-btn--secondary tf-btn--full">Sign out</button>
           </div>
         </div>
-
-        <p class="tf-auth__foot tf-auth__rise" style="--d: 0.6s">
-          <a href="pricing.html">View pricing</a>
-          <span aria-hidden="true">·</span>
-          <a href="index.html">Back home</a>
-        </p>
-      </div>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -136,47 +125,48 @@
       let mode = "signin";
       const out = document.getElementById("signed-out");
       const inn = document.getElementById("signed-in");
+      const welcome = document.querySelector(".tf-login__welcome");
       const err = document.getElementById("auth-error");
       const ok = document.getElementById("auth-ok");
       const submit = document.getElementById("auth-submit");
       const heading = document.getElementById("auth-heading");
-      const sub = document.getElementById("auth-sub");
       const pass = document.getElementById("password");
-      const togglePass = document.getElementById("toggle-pass");
+      const welcomeTitle = document.getElementById("welcome-title");
+      const welcomeBody = document.getElementById("welcome-body");
+      const switchText = document.getElementById("switch-text");
+      const modeSwitch = document.getElementById("mode-switch");
 
       function setMode(m) {
         mode = m;
         const signin = m === "signin";
-        submit.querySelector(".tf-btn__label").textContent = signin ? "Sign in" : "Create account";
-        heading.textContent = signin ? "Welcome back" : "Create your account";
-        sub.textContent = signin
-          ? "Enter your credentials to continue."
-          : "Set up access to sync cart and deployments.";
+        document.body.classList.toggle("is-signup", !signin);
+        submit.querySelector(".tf-btn__label").textContent = signin ? "Sign In" : "Sign Up";
+        heading.textContent = signin ? "Sign In" : "Create Account";
         pass.setAttribute("autocomplete", signin ? "current-password" : "new-password");
-        document.querySelectorAll(".tf-mode-toggle button").forEach((b) => {
-          const active = b.dataset.mode === m;
-          b.classList.toggle("is-active", active);
-          b.setAttribute("aria-selected", active ? "true" : "false");
-        });
+        welcomeTitle.textContent = "Welcome";
+        welcomeBody.textContent = signin
+          ? "Sync your cart and deploy email & endpoint protection across your organization."
+          : "Create an account to save deployments and manage security from any device.";
+        switchText.textContent = signin ? "don't have an account?" : "already have an account?";
+        modeSwitch.textContent = signin ? "Sign up" : "Sign in";
         err.classList.add("tf-hidden");
         ok.classList.add("tf-hidden");
       }
 
-      document.querySelectorAll(".tf-mode-toggle button").forEach((b) =>
-        b.addEventListener("click", () => setMode(b.dataset.mode)),
-      );
+      modeSwitch.addEventListener("click", () => setMode(mode === "signin" ? "signup" : "signin"));
 
-      togglePass.addEventListener("click", () => {
-        const show = pass.type === "password";
-        pass.type = show ? "text" : "password";
-        togglePass.textContent = show ? "Hide" : "Show";
-        togglePass.setAttribute("aria-pressed", show ? "true" : "false");
+      document.getElementById("forgot").addEventListener("click", () => {
+        ok.textContent = "Password reset is available from your email provider or support chat.";
+        ok.classList.remove("tf-hidden");
       });
 
       async function refresh() {
         const session = await window.TW24.cart.getSession();
-        out.classList.toggle("tf-hidden", !!session);
-        inn.classList.toggle("tf-hidden", !session);
+        const signed = !!session;
+        out.classList.toggle("tf-hidden", signed);
+        welcome.classList.toggle("tf-hidden", signed);
+        inn.classList.toggle("tf-hidden", !signed);
+        document.body.classList.toggle("is-authed", signed);
         if (session?.user?.email) {
           document.querySelectorAll("[data-user-email]").forEach((el) => {
             el.textContent = session.user.email;
