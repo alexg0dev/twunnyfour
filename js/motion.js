@@ -80,7 +80,6 @@
     const hero = document.querySelector(".tf-hero");
     const bg = document.querySelector(".tf-hero__bg");
     const main = document.querySelector(".tf-hero__main");
-    const visual = document.querySelector(".tf-hero__visual");
     if (!hero || !bg) return;
 
     let ticking = false;
@@ -88,14 +87,10 @@
       const y = window.scrollY;
       const h = hero.offsetHeight || 1;
       const p = Math.min(1, Math.max(0, y / h));
-      bg.style.transform = `translate3d(0, ${y * 0.22}px, 0)`;
+      bg.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
       if (main) {
-        main.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
-        main.style.opacity = String(1 - p * 0.7);
-      }
-      if (visual) {
-        visual.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
-        visual.style.opacity = String(1 - p * 0.85);
+        main.style.transform = `translate3d(0, ${y * 0.06}px, 0)`;
+        main.style.opacity = String(1 - p * 0.65);
       }
       ticking = false;
     };
