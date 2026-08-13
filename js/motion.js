@@ -168,7 +168,7 @@
   function initRipple() {
     if (reduce) return;
     const targets = document.querySelectorAll(
-      ".tf-btn, .tf-nav__cta, .tf-nav__signin, .tf-nav__link, .tf-card--link, .tf-chat-toggle, .tf-login__submit, .tf-hero__pill",
+      ".tf-btn, .tf-nav__cta, .tf-nav__link, .tf-card--link, .tf-product-lane, .tf-chat-toggle, .tf-login__submit, .tf-hero__pill",
     );
     targets.forEach((el) => {
       el.addEventListener("pointerdown", (e) => {
@@ -188,7 +188,7 @@
 
   function initPress() {
     if (reduce) return;
-    document.querySelectorAll(".tf-btn, .tf-nav__cta, .tf-nav__signin, .tf-card--link, .tf-chat-toggle, .tf-login__submit").forEach((el) => {
+    document.querySelectorAll(".tf-btn, .tf-nav__cta, .tf-card--link, .tf-product-lane, .tf-chat-toggle, .tf-login__submit").forEach((el) => {
       el.addEventListener("pointerdown", () => el.classList.add("is-press"));
       const clear = () => el.classList.remove("is-press");
       el.addEventListener("pointerup", clear);

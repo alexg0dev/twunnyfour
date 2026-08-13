@@ -10,10 +10,13 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
+  <body class="is-home">
     <header class="tf-nav">
       <div class="tf-nav__inner">
         <a href="index.html" class="tf-logo">Twunny<span>Four</span></a>
@@ -24,7 +27,6 @@
           <a href="pricing.html" class="tf-nav__link">Pricing</a>
         </nav>
         <div class="tf-nav__actions">
-          <a href="login.html" data-auth-link class="tf-nav__signin">Sign in</a>
           <a href="pricing.html" class="tf-nav__cta">Get started</a>
           <a href="cart.html" class="tf-nav__cart" aria-label="Cart">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
@@ -42,20 +44,21 @@
       <a href="endpoint.html">Endpoint</a>
       <a href="pricing.html">Pricing</a>
       <a href="bundles.html">Bundles</a>
-      <a href="login.html" data-auth-link>Sign in</a>
     </div>
 
     <main>
       <section class="tf-hero tf-hero--vista" aria-label="Hero">
         <div class="tf-hero__bg" aria-hidden="true">
           <img class="tf-hero__matrix" src="assets/hero-bg.png" alt="" />
+          <div class="tf-hero__veil"></div>
           <div class="tf-hero__orb tf-hero__orb--a"></div>
           <div class="tf-hero__orb tf-hero__orb--b"></div>
+          <div class="tf-hero__grid"></div>
         </div>
         <div class="tf-hero__layout">
           <div class="tf-hero__main">
             <h1 class="tf-hero__brand">Twunny<span>Four</span></h1>
-            <p class="tf-hero__tagline">Email &amp; endpoint security that stops phishing, ransomware, and identity compromise before they spread.</p>
+            <p class="tf-hero__tagline">Stop phishing, ransomware, and identity compromise before they spread.</p>
             <div class="tf-hero__actions">
               <a href="pricing.html" class="tf-hero__pill">
                 <span>Get protected</span>
@@ -67,10 +70,6 @@
                 <a href="endpoint.html">Endpoint security</a>
               </div>
             </div>
-            <div class="tf-hero__counter">
-              <p class="tf-hero__count"><span data-count-up data-to="20">0</span></p>
-              <p class="tf-hero__count-label">capabilities</p>
-            </div>
           </div>
           <div class="tf-hero__visual" aria-hidden="true">
             <img src="assets/hero-isometric.png" alt="" class="tf-hero__art" />
@@ -78,119 +77,59 @@
         </div>
       </section>
 
-      <section class="tf-section">
+      <section class="tf-section tf-section--focus">
         <div class="tf-container">
-          <div class="tf-split tf-reveal">
-            <div>
-              <p class="tf-caption tf-caption--red">Why it matters</p>
-              <h2 class="tf-title-lg tf-mt-2">Most breaches still start in the inbox or on a laptop</h2>
+          <div class="tf-focus tf-reveal">
+            <p class="tf-caption tf-caption--red">The surfaces that matter</p>
+            <h2 class="tf-title-lg tf-mt-2">Most breaches still start in the inbox or on a laptop.</h2>
+            <p class="tf-focus__lede tf-mt-3">
+              Attackers do not need exotic zero-days when a convincing invoice or an unpatched endpoint will do. TwunnyFour protects communication and devices—the two places trust is decided every day.
+            </p>
+          </div>
+
+          <div class="tf-lanes tf-reveal tf-reveal-stagger tf-mt-5">
+            <div class="tf-lane">
+              <p class="tf-lane__index">01</p>
+              <h3 class="tf-lane__title">Email is the front door</h3>
+              <p class="tf-lane__body">Phishing, BEC, and spoofed domains remain the cheapest path into finance and admin accounts. Stopping malicious messages early collapses entire classes of incident work.</p>
             </div>
-            <div class="tf-body">
-              <p>
-                Attackers do not need exotic zero-days when a convincing invoice, a compromised SaaS token, or an unpatched endpoint will do. TwunnyFour focuses on communication and devices—the two surfaces where trust is decided every day.
-              </p>
-              <p class="tf-mt-3">
-                We package zero-trust outcomes—verify identity, limit blast radius, inspect content, respond quickly—into products security leaders can deploy without a year-long transformation.
-              </p>
+            <div class="tf-lane">
+              <p class="tf-lane__index">02</p>
+              <h3 class="tf-lane__title">Endpoints are the foothold</h3>
+              <p class="tf-lane__body">Once malware lands, lateral movement begins. NGAV, EDR, and hardening shrink that window from hours to seconds.</p>
             </div>
-          </div>
-
-          <div class="tf-grid-3 tf-reveal tf-reveal-stagger tf-mt-5">
-            <article class="tf-card">
-              <h3 class="tf-title-sm">Email is the front door</h3>
-              <p class="tf-card__body tf-mt-2">Phishing, BEC, and spoofed domains remain the cheapest path into finance and admin accounts. Stopping malicious messages early collapses entire classes of incident work.</p>
-            </article>
-            <article class="tf-card">
-              <h3 class="tf-title-sm">Endpoints are the foothold</h3>
-              <p class="tf-card__body tf-mt-2">Once malware lands, lateral movement begins. NGAV, EDR, and hardening shrink that window from hours to seconds.</p>
-            </article>
-            <article class="tf-card">
-              <h3 class="tf-title-sm">Identity binds both</h3>
-              <p class="tf-card__body tf-mt-2">Stolen credentials turn a single phish into a cloud-wide compromise. MFA and behavioral analytics close the gap between mailbox and infrastructure.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="tf-section tf-section--deep">
-        <div class="tf-container">
-          <div class="tf-section-head tf-reveal">
-            <p class="tf-caption tf-caption--red">How we work</p>
-            <h2 class="tf-title-lg tf-mt-2">Assess. Deploy. Prove.</h2>
-            <p class="tf-body tf-mt-3">Connect Microsoft 365, Google Workspace, and your device fleet—then manage risk from one capability and commerce surface.</p>
-          </div>
-          <ol class="tf-grid-3 tf-reveal tf-reveal-stagger">
-            <li class="tf-card">
-              <p class="tf-caption tf-caption--red">01</p>
-              <h3 class="tf-title-sm tf-mt-2">Assess exposure</h3>
-              <p class="tf-card__body tf-mt-2">Start with gateway coverage, endpoint prevention, and identity controls. Add specialized layers where industry or architecture demands them.</p>
-            </li>
-            <li class="tf-card">
-              <p class="tf-caption tf-caption--red">02</p>
-              <h3 class="tf-title-sm tf-mt-2">Deploy with intent</h3>
-              <p class="tf-card__body tf-mt-2">Each product ships with defined outcomes—block phishing, contain ransomware, harden devices—not an endless feature matrix.</p>
-            </li>
-            <li class="tf-card">
-              <p class="tf-caption tf-caption--red">03</p>
-              <h3 class="tf-title-sm tf-mt-2">Operate and prove</h3>
-              <p class="tf-card__body tf-mt-2">Monitoring, response playbooks, and posture reporting keep the program measurable for security teams and clear for executives.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section id="capabilities" class="tf-section">
-        <div class="tf-container">
-          <div class="tf-section-head tf-reveal">
-            <p class="tf-caption tf-caption--red">Capabilities</p>
-            <h2 class="tf-title-lg tf-mt-2">Select from 20 core security controls</h2>
-            <p class="tf-body tf-mt-3">Choose a capability to review controls and pricing, then deploy to cart.</p>
-          </div>
-          <div class="tf-theatre tf-reveal">
-            <div id="cap-list" class="tf-theatre__rail" role="listbox" aria-label="Capabilities"></div>
-            <div class="tf-theatre__stage">
-              <div id="detail-mark" class="tf-theatre__watermark" aria-hidden="true">20</div>
-              <div id="detail-body" class="tf-theatre__content is-in">
-                <p class="tf-caption tf-caption--red">Capability</p>
-                <h3 id="detail-name" class="tf-title-md tf-mt-2">Identity Protection</h3>
-                <p id="detail-blurb" class="tf-body-sm tf-mt-3"></p>
-                <p id="detail-deep" class="tf-body tf-mt-3"></p>
-                <p class="tf-caption tf-mt-4">Best for</p>
-                <p id="detail-who" class="tf-body-sm tf-mt-1"></p>
-                <p class="tf-caption tf-mt-3">Included</p>
-                <ul id="detail-features" class="tf-feature-list tf-mt-2"></ul>
-              </div>
-              <div class="tf-theatre__foot">
-                <div>
-                  <p class="tf-caption">Per node / month</p>
-                  <p class="tf-theatre__price tf-mt-1">$<span id="detail-price">15</span></p>
-                </div>
-                <button id="detail-deploy" data-add-cart="cap-20" class="tf-btn tf-btn--primary">Deploy capability</button>
-              </div>
+            <div class="tf-lane">
+              <p class="tf-lane__index">03</p>
+              <h3 class="tf-lane__title">Identity binds both</h3>
+              <p class="tf-lane__body">Stolen credentials turn a single phish into a cloud-wide compromise. MFA and behavioral analytics close the gap between mailbox and infrastructure.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="tf-section tf-section--deep">
+      <section class="tf-section tf-section--deep tf-section--products">
         <div class="tf-container">
           <div class="tf-section-head tf-reveal">
             <p class="tf-caption tf-caption--red">Products</p>
-            <h2 class="tf-title-lg tf-mt-2">Two product lines</h2>
-            <p class="tf-body tf-mt-3">Open a product page for architecture, plans, and FAQs.</p>
+            <h2 class="tf-title-lg tf-mt-2">Two lines. Full coverage.</h2>
+            <p class="tf-body tf-mt-3">Architecture, plans, and FAQs live on each product page.</p>
           </div>
-          <div class="tf-grid-2 tf-reveal tf-reveal-stagger">
-            <a href="email.html" class="tf-card tf-card--link">
-              <p class="tf-caption tf-caption--red">Email</p>
-              <h3 class="tf-title-md tf-mt-2">Email security</h3>
-              <p class="tf-card__body tf-mt-3">Gateway, BEC defense, DMARC, awareness, and collaboration protection.</p>
-              <span class="tf-card__arrow">View product <span aria-hidden="true">→</span></span>
+          <div class="tf-product-lanes tf-reveal tf-reveal-stagger">
+            <a href="email.html" class="tf-product-lane">
+              <div class="tf-product-lane__copy">
+                <p class="tf-caption tf-caption--red">Email</p>
+                <h3 class="tf-product-lane__title">Email security</h3>
+                <p class="tf-product-lane__body">Gateway, BEC defense, DMARC, awareness, and collaboration protection.</p>
+              </div>
+              <span class="tf-product-lane__go" aria-hidden="true">→</span>
             </a>
-            <a href="endpoint.html" class="tf-card tf-card--link">
-              <p class="tf-caption tf-caption--red">Endpoint</p>
-              <h3 class="tf-title-md tf-mt-2">Endpoint security</h3>
-              <p class="tf-card__body tf-mt-3">NGAV, EDR/XDR, managed hunting, identity protection, and MDR.</p>
-              <span class="tf-card__arrow">View product <span aria-hidden="true">→</span></span>
+            <a href="endpoint.html" class="tf-product-lane">
+              <div class="tf-product-lane__copy">
+                <p class="tf-caption tf-caption--red">Endpoint</p>
+                <h3 class="tf-product-lane__title">Endpoint security</h3>
+                <p class="tf-product-lane__body">NGAV, EDR/XDR, managed hunting, identity protection, and MDR.</p>
+              </div>
+              <span class="tf-product-lane__go" aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -198,11 +137,11 @@
 
       <section class="tf-section">
         <div class="tf-container">
-          <div class="tf-reveal tf-flex tf-flex-col tf-gap-2 tf-items-center tf-justify-between tf-mb-4">
+          <div class="tf-news-head tf-reveal">
             <div class="tf-section-head tf-mb-0">
               <p class="tf-caption tf-caption--red">News</p>
               <h2 class="tf-title-lg tf-mt-2">Industry reporting</h2>
-              <p class="tf-body tf-mt-3">Headlines filtered toward phishing, ransomware, identity, cloud, and breach topics.</p>
+              <p class="tf-body tf-mt-3">Headlines filtered toward phishing, ransomware, identity, and breach topics.</p>
             </div>
             <p class="tf-caption tf-shrink-0">Updated <span id="news-stamp">…</span></p>
           </div>
@@ -212,12 +151,12 @@
         </div>
       </section>
 
-      <section class="tf-section" style="padding-top: 0;">
+      <section class="tf-section tf-section--cta">
         <div class="tf-container">
           <div class="tf-cta-band tf-reveal">
             <div>
               <h2 class="tf-title-md">Ready to price a stack?</h2>
-              <p class="tf-body-sm tf-mt-2">Transparent plans—or assemble capabilities à la carte.</p>
+              <p class="tf-body-sm tf-mt-2">Transparent plans—or assemble protection à la carte.</p>
             </div>
             <a href="pricing.html" class="tf-btn tf-btn--primary">View pricing</a>
           </div>
@@ -230,7 +169,7 @@
         <div>
           <a href="index.html" class="tf-logo">Twunny<span>Four</span></a>
           <p class="tf-body-sm tf-mt-3">
-            Zero-trust cybersecurity for email and endpoints. Clear packaging, measurable outcomes.
+            Cybersecurity for email and endpoints. Clear packaging, measurable outcomes.
           </p>
         </div>
         <div class="tf-footer__col">
@@ -245,14 +184,13 @@
           <h4>Company</h4>
           <ul>
             <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
             <li><button type="button" onclick="document.getElementById('tw24-chat-toggle')?.click()">Support</button></li>
           </ul>
         </div>
         <div class="tf-footer__col">
           <h4>Trust</h4>
           <p class="tf-body-sm tf-mt-2">
-            Built for Microsoft 365, Google Workspace, and modern endpoint fleets. Cart sync via Supabase auth.
+            Built for Microsoft 365, Google Workspace, and modern endpoint fleets.
           </p>
         </div>
       </div>
@@ -274,55 +212,6 @@
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
       };
 
-      const caps = window.TW24_PRODUCTS.capabilities.slice().sort((a, b) => a.number - b.number);
-      let active = caps.find((c) => c.number === 20) || caps[0];
-      const list = document.getElementById("cap-list");
-      const mark = document.getElementById("detail-mark");
-      const body = document.getElementById("detail-body");
-
-      function paint(cap) {
-        active = cap;
-        mark.textContent = String(cap.number).padStart(2, "0");
-        document.getElementById("detail-name").textContent = cap.name;
-        document.getElementById("detail-blurb").textContent = cap.blurb;
-        document.getElementById("detail-deep").textContent = cap.detail || "";
-        document.getElementById("detail-who").textContent = cap.who || "";
-        document.getElementById("detail-price").textContent = cap.price;
-        document.getElementById("detail-deploy").setAttribute("data-add-cart", cap.id);
-        document.getElementById("detail-features").innerHTML = cap.features.map((f) => `<li>${f}</li>`).join("");
-        list.querySelectorAll(".tf-theatre__item").forEach((row) => {
-          const on = row.dataset.id === cap.id;
-          row.classList.toggle("is-active", on);
-          row.setAttribute("aria-selected", on ? "true" : "false");
-        });
-      }
-
-      function renderDetail(cap) {
-        if (cap.id === active.id && body.classList.contains("is-in")) {
-          paint(cap);
-          return;
-        }
-        window.TW24_theatreSwap(body, mark, () => paint(cap));
-      }
-
-      list.innerHTML = caps
-        .map(
-          (c) => `
-        <button type="button" class="tf-theatre__item ${c.id === active.id ? "is-active" : ""}" data-id="${c.id}" role="option" aria-selected="${c.id === active.id}">
-          <span class="tf-theatre__idx">${String(c.number).padStart(2, "0")}</span>
-          <span class="tf-theatre__name">${c.name}</span>
-        </button>`,
-        )
-        .join("");
-
-      list.addEventListener("click", (e) => {
-        const row = e.target.closest("[data-id]");
-        if (!row) return;
-        const cap = caps.find((c) => c.id === row.dataset.id);
-        if (cap) renderDetail(cap);
-      });
-      paint(active);
-
       async function loadNews() {
         const host = document.getElementById("news-feed");
         const stamp = document.getElementById("news-stamp");
@@ -342,7 +231,7 @@
             ? new Date(data.fetchedAt).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })
             : "just now";
           host.innerHTML = items
-            .slice(0, 8)
+            .slice(0, 6)
             .map(
               (item) => `
             <article class="tf-news__row">
@@ -350,7 +239,7 @@
                 <p class="tf-news__source">${item.source || "Intel"}</p>
                 <h3 class="tf-news__title">${item.title}</h3>
               </div>
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="tf-btn tf-btn--secondary tf-shrink-0" style="min-height: 2.2rem; padding: 0 1rem; font-size: 0.8rem;">View report</a>
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="tf-news__link">View report</a>
             </article>`,
             )
             .join("");
@@ -364,7 +253,7 @@
                 <p class="tf-news__source">${item.source}</p>
                 <h3 class="tf-news__title">${item.title}</h3>
               </div>
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="tf-btn tf-btn--secondary tf-shrink-0" style="min-height: 2.2rem; padding: 0 1rem; font-size: 0.8rem;">View report</a>
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="tf-news__link">View report</a>
             </article>`,
             )
             .join("");

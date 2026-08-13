@@ -172,7 +172,7 @@
       log.scrollTop = log.scrollHeight;
     }
 
-    push("bot", "Hi — ask about bundles, pricing, or deploying a capability.");
+    push("bot", "Hi — ask about email security, endpoint protection, or pricing.");
 
     function setOpen(v) {
       open = v;
@@ -194,7 +194,7 @@
         if (lower.includes("price") || lower.includes("cost"))
           reply = "Plans start at $10/user/mo. Capabilities are billed per node. See Pricing for details.";
         else if (lower.includes("cart") || lower.includes("login"))
-          reply = "Add to cart requires login so your deployments sync across devices. Use the account icon to sign in.";
+          reply = "Open Pricing or a product page, add modules to your cart, then request deployment from Cart.";
         else if (lower.includes("phish") || lower.includes("email"))
           reply = "Our Email Security Cloud Gateway blocks phishing, quishing, and brand impersonation with AI link scanning.";
         else if (lower.includes("endpoint") || lower.includes("ransomware"))

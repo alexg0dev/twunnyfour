@@ -19,8 +19,7 @@
           <a href="endpoint.html" class="tf-nav__link">Endpoint</a>
           <a href="pricing.html" class="tf-nav__link">Pricing</a>
         </nav>
-                <div class="tf-nav__actions">
-          <a href="login.html" data-auth-link class="tf-nav__signin">Sign in</a>
+        <div class="tf-nav__actions">
           <a href="pricing.html" class="tf-nav__cta">Get started</a>
           <a href="cart.html" class="tf-nav__cart" aria-label="Cart">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6 5 3H2"/></svg>
@@ -101,7 +100,7 @@
         wrap.classList.remove("tf-hidden");
         const items = await window.TW24.cart.getCart();
         if (!items.length) {
-          list.innerHTML = `<div class="tf-cart-empty">Cart is empty. Explore <a href="email.html">Email</a>, <a href="endpoint.html">Endpoint</a>, or <a href="index.html#capabilities">capabilities</a>.</div>`;
+          list.innerHTML = `<div class="tf-cart-empty">Cart is empty. Explore <a href="email.html">Email</a>, <a href="endpoint.html">Endpoint</a>, or <a href="pricing.html">Pricing</a>.</div>`;
           document.getElementById("cart-total").textContent = "0";
           return;
         }
