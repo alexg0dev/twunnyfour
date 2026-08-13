@@ -851,10 +851,11 @@ svg {
   border: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .tf-hero--vista .tf-hero__brand {
     white-space: normal;
-    font-size: clamp(3rem, 14vw, 4.2rem);
+    font-size: clamp(3.1rem, 15vw, 4.4rem);
+    overflow-wrap: anywhere;
   }
 }
 
